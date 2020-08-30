@@ -33,17 +33,6 @@ class ConfigureSimulation extends PtsCanvas {
       this.form.fillOnly("#123").point( p, Math.abs( p.noise2D() * this.space.size.x/10 ) );
     });
 
-    // Generate noise in a line
-    let nps = this.noiseLine.map( (p) => {
-      p.step( 0.01*(1-speed.x), 0.05*speed.y );
-      return p.$add( 0, p.noise2D()*this.space.center.y );
-    });
-
-    // Draw wave
-    nps = nps.concat( [this.space.size, new Pt( 1, this.space.size.y )] );
-    this.form.fillOnly("rgba(0,140,255,.65)").polygon( nps );
-    this.form.fill("#fff").points( nps, 2, "square");
-
     this.follower = this.follower.add( this.space.pointer.$subtract( this.follower ).divide(4) );
 
     this.form.stroke("#fff");
@@ -55,6 +44,18 @@ class ConfigureSimulation extends PtsCanvas {
       let r = Rectangle.fromCenter( Rectangle.center(p), Rectangle.size(p).multiply( scale ) );
       this.form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
     })
+
+    // Generate noise in a line
+    let nps = this.noiseLine.map( (p) => {
+      p.step( 0.01*(1-speed.x), 0.05*speed.y );
+      return p.$add( 0, p.noise2D()*this.space.center.y );
+    });
+
+    // Draw wave
+    nps = nps.concat( [this.space.size, new Pt( 1, this.space.size.y )] );
+    this.form.fillOnly("rgba(41, 98, 255, .75)").polygon( nps );
+    this.form.fill("#fff").points( nps, 2, "circle");
+
   }
 }
 
