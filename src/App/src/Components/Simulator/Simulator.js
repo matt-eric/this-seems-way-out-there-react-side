@@ -37,14 +37,6 @@ class ConfigureSimulation extends PtsCanvas {
 
     this.form.stroke("#fff");
 
-    // calculate the size and color of each cell based on its distance to the pointer
-    let rects = this.pts.map( (p) => {
-      let mag = this.follower.$subtract( Rectangle.center( p ) ).magnitude()
-      let scale = Math.min( 1.5, Math.abs( 1 - ( 0.7 * mag / this.space.center.y ) ) );
-      let r = Rectangle.fromCenter( Rectangle.center(p), Rectangle.size(p).multiply( scale ) );
-      this.form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
-    })
-
     // Generate noise in a line
     let nps = this.noiseLine.map( (p) => {
       p.step( 0.01*(1-speed.x), 0.05*speed.y );
@@ -54,7 +46,15 @@ class ConfigureSimulation extends PtsCanvas {
     // Draw wave
     nps = nps.concat( [this.space.size, new Pt( 1, this.space.size.y )] );
     this.form.fillOnly("rgba(41, 98, 255, .75)").polygon( nps );
-    this.form.fill("#fff").points( nps, 2, "circle");
+    this.form.fill("#76ff03").points( nps, 3, "circle");
+
+    // calculate the size and color of each cell based on its distance to the pointer
+    let rects = this.pts.map( (p) => {
+      let mag = this.follower.$subtract( Rectangle.center( p ) ).magnitude()
+      let scale = Math.min( 1.5, Math.abs( 1 - ( 0.7 * mag / this.space.center.y ) ) );
+      let r = Rectangle.fromCenter( Rectangle.center(p), Rectangle.size(p).multiply( scale ) );
+      this.form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
+    })
 
   }
 }
