@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import { theme } from './theme'
-import Simulator from './Components/Simulator'
+import Routing from './Routing'
 
 const MuiTheme = createMuiTheme(theme)
 
@@ -12,13 +12,17 @@ function App() {
 
   return (
 
-    <div className="App">
+    <div>
 
-      <MuiThemeProvider theme={MuiTheme}>
+      <BrowserRouter>
 
-        <Simulator/>
+        <MuiThemeProvider theme={MuiTheme}>
 
-      </MuiThemeProvider>
+          <Routing/>
+
+        </MuiThemeProvider>
+
+      </BrowserRouter>
 
     </div>
 
