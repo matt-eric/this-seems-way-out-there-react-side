@@ -13,11 +13,9 @@ import {
   Typography,
   IconButton
 } from '@material-ui/core';
-import {
-  MenuIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon
-} from '@material-ui/icons';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Routing from './Routing'
 
 const MuiTheme = createMuiTheme(theme)
