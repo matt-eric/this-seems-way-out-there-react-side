@@ -115,47 +115,47 @@ function App() {
 
         <MuiThemeProvider theme={MuiTheme}>
 
-            <AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
+          <AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
 
-              <Toolbar>
+            <Toolbar>
 
-                <IconButton
-                  color="inherit"
-                  aria-label="open drawer"
-                  onClick={handleDrawerOpen}
-                  edge="start"
-                  className={clsx(classes.menuButton, open && classes.hide)}
-                >
-                  <MenuIcon/>
-                </IconButton>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                className={clsx(classes.menuButton, open && classes.hide)}
+              >
+                <MenuIcon/>
+              </IconButton>
 
-                <Typography variant='h6' className={classes.headerFont}>
-                  WAVEFORMS.APP
-                </Typography>
+              <Typography variant='h6' className={classes.headerFont}>
+                WAVEFORMS.APP
+              </Typography>
 
-              </Toolbar>
+            </Toolbar>
 
-            </AppBar>
+          </AppBar>
 
-            <Drawer
-              className={classes.drawer}
-              variant="persistent"
-              anchor="left"
-              open={open}
-              classes={{ paper: classes.drawerPaper }}
-            >
+          <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{ paper: classes.drawerPaper }}
+          >
 
-              <div className={classes.drawerHeader}>
-                <IconButton onClick={handleDrawerClose}>
-                  {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                </IconButton>
-              </div>
+            <div className={classes.drawerHeader}>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+              </IconButton>
+            </div>
 
-            </Drawer>
+          </Drawer>
 
-            <main className={clsx(classes.content, { [classes.contentShift]: open, })}>
-              <Routing/>
-            </main>
+          <main className={clsx(classes.content, { [classes.contentShift]: open, })}>
+            <Routing/>
+          </main>
 
         </MuiThemeProvider>
 
