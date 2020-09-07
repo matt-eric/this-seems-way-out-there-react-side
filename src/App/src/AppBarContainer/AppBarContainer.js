@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Routing from './src/Routing'
 import InfoPopover from './src/InfoPopover'
 
@@ -34,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+  bottomAppBar: {
+    top: 'auto',
+    bottom: 0,
+    position: 'fixed'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -149,11 +155,9 @@ function AppBarContainer() {
 
           <div className={classes.iconButtons}>
 
-            <Tooltip title="GitHub">
-              <IconButton className={classes.icon} onClick={() => openGitHub()}>
-                <GitHubIcon />
-              </IconButton>
-            </Tooltip>
+            <IconButton className={classes.icon} onClick={() => openGitHub()}>
+              <GitHubIcon/>
+            </IconButton>
 
             <InfoPopover/>
 
@@ -182,6 +186,18 @@ function AppBarContainer() {
       <main className={clsx(classes.content, { [classes.contentShift]: open, })}>
         <Routing/>
       </main>
+
+      <AppBar position="fixed" className={classes.bottomAppBar}>
+
+        <Toolbar>
+
+          <IconButton className={classes.icon} edge="start">
+            <BlurOnIcon fontSize="large"/>
+          </IconButton>
+
+        </Toolbar>
+
+      </AppBar>
 
     </div>
 
