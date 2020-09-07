@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { loadCSS } from 'fg-loadcss';
 import clsx from 'clsx';
@@ -8,12 +7,16 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  IconButton
+  IconButton,
+  Button,
+  Tooltip,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import GitHubIcon from '@material-ui/icons/GitHub';
 import Routing from './src/Routing'
+import InfoPopover from './src/InfoPopover'
 
 const drawerWidth = 240;
 
@@ -73,6 +76,20 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "'MuseoModerno', cursive",
     color: '#26ce9e'
   },
+  alphaButton: {
+    fontFamily: "'MuseoModerno', cursive",
+    backgroundColor: '#26ce9e',
+    color: '#fff',
+    marginLeft: '20px'
+  },
+  iconButtons: {
+    position: 'absolute',
+    right: 20,
+    display: 'flex',
+  },
+  icon: {
+    color: '#26ce9e',
+  }
 }));
 
 function AppBarContainer() {
@@ -88,6 +105,10 @@ function AppBarContainer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const openGitHub = () => {
+    window.open('https://github.com/matt-eric/waveforms')
+  }
 
   React.useEffect(() => {
     const node = loadCSS(
@@ -121,6 +142,22 @@ function AppBarContainer() {
           <Typography variant='h6' className={classes.headerFont}>
             WAVEFORMS.APP
           </Typography>
+
+          <Button variant="outlined" disabled className={classes.alphaButton}>
+            ALPHA
+          </Button>
+
+          <div className={classes.iconButtons}>
+
+            <Tooltip title="GitHub">
+              <IconButton className={classes.icon} onClick={() => openGitHub()}>
+                <GitHubIcon />
+              </IconButton>
+            </Tooltip>
+
+            <InfoPopover/>
+
+          </div>
 
         </Toolbar>
 
