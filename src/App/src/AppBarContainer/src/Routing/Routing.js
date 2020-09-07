@@ -9,7 +9,7 @@ function Routing() {
         path: '/',
         exact: true,
         name: 'Playground',
-        component: React.lazy(() => import('./views/Playground'))
+        component: React.lazy(() => import('./src/views/Playground'))
       },
     ]
   )
