@@ -1,3 +1,3 @@
-[Interactive Demo](https://matt-eric.github.io/waveforms/)
+[Interactive Demo](https://waveforms-interactive.web.app/)
 
 This is an evolving project.
