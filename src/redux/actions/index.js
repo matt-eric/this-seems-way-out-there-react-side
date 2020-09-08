@@ -1,7 +1,7 @@
-import appActions from './appActions'
+import effectBusActions from './effectBusActions'
 
 const allActions = {
-  appActions,
+  effectBusActions,
 }
 
 export default allActions

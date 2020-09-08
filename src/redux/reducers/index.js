@@ -6,9 +6,8 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
 import { createBrowserHistory } from 'history';
-// import globalReducer from './app';
 
-import appReducer from './appReducer.js'
+import effectBusReducer from './effectBusReducer.js'
 
 const history = createBrowserHistory();
 
@@ -16,7 +15,7 @@ const history = createBrowserHistory();
  * Merges the main reducer with the router state and dynamically injected reducers
  */
 export default function createReducer(injectedReducers = {
-  appReducer: appReducer
+  effectBus: effectBusReducer
 }) {
   const rootReducer = combineReducers({
     router: connectRouter(history),
