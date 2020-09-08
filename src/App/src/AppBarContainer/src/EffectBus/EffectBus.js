@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux'
 const useStyles = makeStyles(theme => ({
   root: {
     top: 'auto',
-    bottom: 0,
     position: 'absolute',
     bottom: '10px',
     maxHeight: '50%',
