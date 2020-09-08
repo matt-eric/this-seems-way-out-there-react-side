@@ -18,6 +18,9 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Routing from './src/Routing'
 import InfoPopover from './src/InfoPopover'
+import { useDispatch, useSelector } from 'react-redux'
+import allActions from '../../../redux/actions'
+import EffectBus from './src/EffectBus'
 
 const drawerWidth = 240;
 
@@ -100,9 +103,14 @@ const useStyles = makeStyles((theme) => ({
 
 function AppBarContainer() {
 
+  const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const {
+    expanded
+  } = useSelector(state => state.effectBus);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -114,6 +122,10 @@ function AppBarContainer() {
 
   const openGitHub = () => {
     window.open('https://github.com/matt-eric/waveforms')
+  }
+
+  const handleDrawerState = () => {
+    dispatch(allActions.effectBusActions.setEffectBusData( 'expanded', !expanded ))
   }
 
   React.useEffect(() => {
@@ -191,13 +203,15 @@ function AppBarContainer() {
 
         <Toolbar>
 
-          <IconButton className={classes.icon} edge="start">
+          <IconButton onClick={() => handleDrawerState()} className={classes.icon} edge="start">
             <BlurOnIcon fontSize="large"/>
           </IconButton>
 
         </Toolbar>
 
       </AppBar>
+
+      <EffectBus/>
 
     </div>
 
