@@ -9,7 +9,6 @@ import {
   Typography,
   IconButton,
   Button,
-  Tooltip,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';

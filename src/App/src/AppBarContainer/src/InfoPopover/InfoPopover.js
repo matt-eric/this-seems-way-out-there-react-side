@@ -5,7 +5,6 @@ import {
   IconButton,
   Popover,
   Typography,
-  Tooltip
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -35,11 +34,9 @@ export default function InfoPopover() {
 
   return (
     <div>
-      <Tooltip title="What is This?">
-        <IconButton className={classes.icon} onClick={handleClick}>
-          <HelpIcon />
-        </IconButton>
-      </Tooltip>
+      <IconButton className={classes.icon} onClick={handleClick}>
+        <HelpIcon />
+      </IconButton>
       <Popover
         id={id}
         open={open}
