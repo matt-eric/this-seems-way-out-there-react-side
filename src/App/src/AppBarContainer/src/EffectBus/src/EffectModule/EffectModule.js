@@ -80,7 +80,7 @@ export default function EffectModuleContainer(){
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="droppable">
+      <Droppable droppableId="droppable" direction="horizontal">
         {(droppableProvided, droppableSnapshot) => (
           <div
             ref={droppableProvided.innerRef}
