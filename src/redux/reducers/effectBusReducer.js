@@ -1,5 +1,6 @@
 const effectBus = (state = {
-  expanded: false
+  expanded: false,
+  effectModules: undefined
 }, action) => {
   switch(action.type){
     case `SET_EFFECT_BUS_DATA`:

@@ -1,8 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import EffectModule from './src/EffectModule'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
@@ -15,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     width: '100vw',
     paddingBottom: '3em',
   },
+  panel: {
+    backgroundColor: '#04080a'
+  }
 }));
 
 export default function EffectBus(props) {
@@ -29,7 +33,7 @@ export default function EffectBus(props) {
 
     <div className={classes.root}>
 
-      <ExpansionPanel expanded={expanded}>
+      <ExpansionPanel className={classes.panel} expanded={expanded}>
 
         <ExpansionPanelSummary
           aria-controls="panel1a-content"
@@ -38,7 +42,9 @@ export default function EffectBus(props) {
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails >
-          Effect Bus
+
+          <EffectModule/>
+
         </ExpansionPanelDetails>
 
       </ExpansionPanel>
