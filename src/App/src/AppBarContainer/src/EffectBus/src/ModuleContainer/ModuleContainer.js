@@ -64,9 +64,18 @@ export default function ModuleContainer(){
           id: `item-${k}`,
           content: `item ${k}`,
         }));
-      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(8)))
+      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(2)))
     }
   }, [dispatch, effectModules])
+
+  const addModule = () => {
+    const mapModules = (count) =>
+      Array.from({ length: count }, (v, k) => k).map((k) => ({
+        id: `item-${k}`,
+        content: `item ${k}`,
+      }));
+    dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(effectModules.length+1)))
+  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -74,7 +83,7 @@ export default function ModuleContainer(){
         {(droppableProvided, droppableSnapshot) => (
           <div className={classes.effectModuleContainer}>
             <div>
-              <Button className={classes.addButton} variant='contained'>
+              <Button className={classes.addButton} variant='contained' onClick={() => addModule()}>
                 <AddIcon fontSize='large'/>
               </Button>
             </div>
