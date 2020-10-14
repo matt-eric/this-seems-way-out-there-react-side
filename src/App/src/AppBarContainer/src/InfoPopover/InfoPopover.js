@@ -10,7 +10,7 @@ import {
 const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
-    fontFamily: "'MuseoModerno', cursive",
+    fontFamily: "'Roboto Mono', monospace"
   },
   icon: {
     color: '#26ce9e',
@@ -52,7 +52,7 @@ export default function InfoPopover() {
         }}
       >
         <Typography className={classes.typography}>
-          This is a development environment and an alpha release of an evolving project. Some features may not work as expected. Enjoy.
+          This is a development environment of an evolving project. Some features may not work as expected. Enjoy.
         </Typography>
       </Popover>
     </div>
