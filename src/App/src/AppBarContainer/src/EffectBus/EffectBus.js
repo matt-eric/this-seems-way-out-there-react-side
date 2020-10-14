@@ -1,5 +1,5 @@
 import React from 'react';
-import EffectModule from './src/EffectModule'
+import ModuleContainer from './src/ModuleContainer'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -12,12 +12,13 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     bottom: '10px',
     maxHeight: '50%',
-    overflow: 'scroll',
-    width: '100vw',
+    overflow: 'none',
+    width: 'auto',
     paddingBottom: '3em',
   },
   panel: {
-    backgroundColor: '#04080a'
+    backgroundColor: '#04080a',
+    opacity: '.75'
   }
 }));
 
@@ -43,7 +44,7 @@ export default function EffectBus(props) {
 
         <ExpansionPanelDetails >
 
-          <EffectModule/>
+          <ModuleContainer/>
 
         </ExpansionPanelDetails>
 
