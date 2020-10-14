@@ -11,13 +11,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row'
   },
-  module: {
-    width: '200px',
-    height: '200px',
-    margin: '5px',
-    backgroundColor: '#04080a',
-    border: '2px solid #69f0ae'
-  }
 }));
 
 export default function ModuleContainer(){
