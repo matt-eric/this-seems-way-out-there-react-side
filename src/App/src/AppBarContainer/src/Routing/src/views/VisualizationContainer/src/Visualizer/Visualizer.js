@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-
 import { PtsCanvas } from 'react-pts-canvas'
 import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
+import { connect } from "react-redux";
+import allActions from '../../../../../../../../../../redux/actions'
 
-class ConfigureSimulation extends PtsCanvas {
+class VisualizationConfigurator extends PtsCanvas {
 
   constructor(props) {
     super(props);
@@ -51,7 +52,7 @@ class ConfigureSimulation extends PtsCanvas {
     // calculate the size and color of each cell based on its distance to the pointer
     let rects = this.pts.map( (p) => {
       let mag = this.follower.$subtract( Rectangle.center( p ) ).magnitude()
-      let scale = Math.min( 1.5, Math.abs( 1 - ( 0.7 * mag / this.space.center.y ) ) );
+      let scale = Math.min( 1.5, Math.abs( this.props.sparkleFocus - ( 0.7 * mag / this.space.center.y ) ) );
       let r = Rectangle.fromCenter( Rectangle.center(p), Rectangle.size(p).multiply( scale ) );
       this.form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
     })
@@ -59,17 +60,31 @@ class ConfigureSimulation extends PtsCanvas {
   }
 }
 
-export default class App extends Component {
+class Visualizer extends Component {
+  constructor(props) {
+    super(props);
+  }
   render () {
     return (
-
       <>
-        <ConfigureSimulation
+        <VisualizationConfigurator
           background="#0c9"
           name="pts-tester"
           style={{opacity: 0.95, height: '100vh'}}
+          sparkleFocus={this.props.sparkleFocus}
         />
       </>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    sparkleFocus: state.effectBus.sparkleFocus,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(Visualizer);

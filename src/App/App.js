@@ -13,6 +13,16 @@ function App() {
 
     <div>
 
+      { (/Mobi/.test(navigator.userAgent)) || (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1)
+
+      ?
+
+      <div>
+        We are working on optimizing 'This is WAY out there.' for mobile devices. Until then, please use a computer to enjoy This is WAY out there..
+      </div>
+
+      :
+
       <BrowserRouter>
 
         <MuiThemeProvider theme={MuiTheme}>
@@ -22,6 +32,8 @@ function App() {
         </MuiThemeProvider>
 
       </BrowserRouter>
+
+      }
 
     </div>
 

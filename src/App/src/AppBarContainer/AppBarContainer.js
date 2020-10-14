@@ -1,18 +1,14 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { loadCSS } from 'fg-loadcss';
 import clsx from 'clsx';
 import {
-  Drawer,
   AppBar,
   Toolbar,
   Typography,
   IconButton,
   Button,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Routing from './src/Routing'
@@ -21,21 +17,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../redux/actions'
 import EffectBus from './src/EffectBus'
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
     }),
   },
   bottomAppBar: {
@@ -49,13 +35,6 @@ const useStyles = makeStyles((theme) => ({
   },
   hide: {
     display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
   },
   drawerHeader: {
     display: 'flex',
@@ -71,7 +50,6 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -81,11 +59,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
   headerFont: {
-    fontFamily: "'MuseoModerno', cursive",
+    fontFamily: "'Fascinate', cursive",
     color: '#26ce9e'
   },
   alphaButton: {
-    fontFamily: "'MuseoModerno', cursive",
+    fontFamily: "'Fascinate', cursive",
     backgroundColor: '#26ce9e',
     color: '#fff',
     marginLeft: '20px'
@@ -104,23 +82,14 @@ function AppBarContainer() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open] = React.useState(false);
 
   const {
     expanded
   } = useSelector(state => state.effectBus);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   const openGitHub = () => {
-    window.open('https://github.com/matt-eric/waveforms')
+    window.open('https://github.com/matt-eric/this-seems-way-out-there-react-side')
   }
 
   const handleDrawerState = () => {
@@ -142,27 +111,13 @@ function AppBarContainer() {
 
     <div>
 
-      <AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
+      <AppBar position="fixed">
 
         <Toolbar>
 
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon/>
-          </IconButton>
-
-          <Typography variant='h6' className={classes.headerFont}>
-            WAVEFORMS.APP
+          <Typography variant='h5' className={classes.headerFont}>
+            This seems WAY out there.
           </Typography>
-
-          <Button variant="outlined" disabled className={classes.alphaButton}>
-            ALPHA
-          </Button>
 
           <div className={classes.iconButtons}>
 
@@ -177,22 +132,6 @@ function AppBarContainer() {
         </Toolbar>
 
       </AppBar>
-
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{ paper: classes.drawerPaper }}
-      >
-
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-
-      </Drawer>
 
       <main className={clsx(classes.content, { [classes.contentShift]: open, })}>
         <Routing/>

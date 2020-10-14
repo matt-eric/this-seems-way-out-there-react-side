@@ -13,10 +13,4 @@ export const theme = {
       contrastText: '#000',
     },
   },
-  typography: {
-    fontFamily: [
-      'Montserrat',
-      'Open Sans',
-    ].join(','),
-  },
 }

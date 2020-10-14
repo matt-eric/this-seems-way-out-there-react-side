@@ -1,20 +1,25 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import ModuleContainer from './src/ModuleContainer'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
   root: {
     top: 'auto',
-    position: 'absolute',
+    position: 'fixed',
     bottom: '10px',
     maxHeight: '50%',
-    overflow: 'scroll',
-    width: '100vw',
+    overflowX: 'scroll',
+    width: '100%',
     paddingBottom: '3em',
   },
+  panel: {
+    backgroundColor: '#04080a',
+    opacity: '.75'
+  }
 }));
 
 export default function EffectBus(props) {
@@ -29,7 +34,7 @@ export default function EffectBus(props) {
 
     <div className={classes.root}>
 
-      <ExpansionPanel expanded={expanded}>
+      <ExpansionPanel className={classes.panel} expanded={expanded}>
 
         <ExpansionPanelSummary
           aria-controls="panel1a-content"
@@ -38,7 +43,9 @@ export default function EffectBus(props) {
         </ExpansionPanelSummary>
 
         <ExpansionPanelDetails >
-          Effect Bus
+
+          <ModuleContainer/>
+
         </ExpansionPanelDetails>
 
       </ExpansionPanel>
