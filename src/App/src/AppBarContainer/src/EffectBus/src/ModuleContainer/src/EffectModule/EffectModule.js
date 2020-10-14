@@ -25,11 +25,14 @@ const useStyles = makeStyles(theme => ({
   toolBar: {
     display: 'flex',
     flexDirecton: 'row',
-    justifyContent: 'space-around'
   },
   interface: {
     display: 'flex',
     flexDirecton: 'column'
+  },
+  delete: {
+    position: 'relative',
+    marginLeft: '35%'
   }
 }));
 
@@ -52,10 +55,6 @@ export default function EffectModule(props){
       icon: <SaveIcon />,
       tooltip: 'Save As Preset'
     },
-    {
-      icon: <DeleteForeverIcon />,
-      tooltip: 'Remove Module'
-    },
   ]
 
   // const {
@@ -73,10 +72,13 @@ export default function EffectModule(props){
     >
       <div className={classes.toolBar}>
         {toolBarIcons.map(obj =>
-          <IconButton color="secondary" >
+          <IconButton color="secondary">
             {obj.icon}
           </IconButton>
         )}
+          <IconButton color="secondary" className={classes.delete}>
+            <DeleteForeverIcon />
+          </IconButton>
       </div>
       <div className={classes.interface}>
 
