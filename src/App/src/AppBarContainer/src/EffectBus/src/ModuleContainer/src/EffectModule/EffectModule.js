@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../../../redux/actions'
+// import { useDispatch, useSelector } from 'react-redux'
+// import allActions from '../../../../../../../../../redux/actions'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function EffectModule(props){
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const classes = useStyles();
 
@@ -58,11 +58,11 @@ export default function EffectModule(props){
     },
   ]
 
-  const {
-    effectModules
-  } = useSelector(state => state.effectBus);
+  // const {
+  //   effectModules
+  // } = useSelector(state => state.effectBus);
 
-  const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
+  // const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
 
   return (
     <Paper

@@ -1,18 +1,14 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { loadCSS } from 'fg-loadcss';
 import clsx from 'clsx';
 import {
-  Drawer,
   AppBar,
   Toolbar,
   Typography,
   IconButton,
   Button,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import Routing from './src/Routing'
@@ -86,8 +82,7 @@ function AppBarContainer() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open] = React.useState(false);
 
   const {
     expanded
