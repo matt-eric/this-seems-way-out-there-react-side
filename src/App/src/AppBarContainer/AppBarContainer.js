@@ -59,11 +59,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 0,
   },
   headerFont: {
-    fontFamily: "'MuseoModerno', cursive",
+    fontFamily: "'Fascinate', cursive",
     color: '#26ce9e'
   },
   alphaButton: {
-    fontFamily: "'MuseoModerno', cursive",
+    fontFamily: "'Fascinate', cursive",
     backgroundColor: '#26ce9e',
     color: '#fff',
     marginLeft: '20px'
@@ -89,7 +89,7 @@ function AppBarContainer() {
   } = useSelector(state => state.effectBus);
 
   const openGitHub = () => {
-    window.open('https://github.com/matt-eric/waveforms')
+    window.open('https://github.com/matt-eric/this-is-way-out-there-react-side')
   }
 
   const handleDrawerState = () => {
@@ -115,13 +115,9 @@ function AppBarContainer() {
 
         <Toolbar>
 
-          <Typography variant='h6' className={classes.headerFont}>
-            WAVEFORMS.APP
+          <Typography variant='h5' className={classes.headerFont}>
+            This is WAY out there.
           </Typography>
-
-          <Button variant="outlined" disabled className={classes.alphaButton}>
-            ALPHA
-          </Button>
 
           <div className={classes.iconButtons}>
 
