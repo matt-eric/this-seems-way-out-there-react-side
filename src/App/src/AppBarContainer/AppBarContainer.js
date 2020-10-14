@@ -89,7 +89,7 @@ function AppBarContainer() {
   } = useSelector(state => state.effectBus);
 
   const openGitHub = () => {
-    window.open('https://github.com/matt-eric/this-is-way-out-there-react-side')
+    window.open('https://github.com/matt-eric/this-seems-way-out-there-react-side')
   }
 
   const handleDrawerState = () => {
@@ -116,7 +116,7 @@ function AppBarContainer() {
         <Toolbar>
 
           <Typography variant='h5' className={classes.headerFont}>
-            This is WAY out there.
+            This seems WAY out there.
           </Typography>
 
           <div className={classes.iconButtons}>
