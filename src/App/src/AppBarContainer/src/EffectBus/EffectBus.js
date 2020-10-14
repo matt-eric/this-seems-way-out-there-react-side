@@ -9,11 +9,11 @@ import { useSelector } from 'react-redux'
 const useStyles = makeStyles(theme => ({
   root: {
     top: 'auto',
-    position: 'absolute',
+    position: 'fixed',
     bottom: '10px',
     maxHeight: '50%',
-    overflow: 'none',
-    width: 'auto',
+    overflowX: 'scroll',
+    width: '100%',
     paddingBottom: '3em',
   },
   panel: {
