@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { PtsCanvas } from 'react-pts-canvas'
 import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
 
-class SimulationConfigurator extends PtsCanvas {
+class VisualizationConfigurator extends PtsCanvas {
 
   constructor(props) {
     super(props);
@@ -59,12 +59,11 @@ class SimulationConfigurator extends PtsCanvas {
   }
 }
 
-export default class Simulator extends Component {
+export default class Visualizer extends Component {
   render () {
     return (
-
       <>
-        <SimulationConfigurator
+        <VisualizationConfigurator
           background="#0c9"
           name="pts-tester"
           style={{opacity: 0.95, height: '100vh'}}

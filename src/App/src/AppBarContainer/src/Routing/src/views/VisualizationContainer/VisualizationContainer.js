@@ -1,5 +1,5 @@
 import React from 'react';
-import Simulator from './src/Simulator'
+import Visualizer from './src/Visualizer'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@ function Playground() {
 
     <div className={classes.root}>
 
-          <Simulator/>
+      <Visualizer/>
 
     </div>
 
