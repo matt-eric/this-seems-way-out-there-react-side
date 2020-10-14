@@ -21,21 +21,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../redux/actions'
 import EffectBus from './src/EffectBus'
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles((theme) => ({
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
     }),
   },
   bottomAppBar: {
@@ -49,13 +39,6 @@ const useStyles = makeStyles((theme) => ({
   },
   hide: {
     display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
   },
   drawerHeader: {
     display: 'flex',
@@ -71,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -111,14 +93,6 @@ function AppBarContainer() {
     expanded
   } = useSelector(state => state.effectBus);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
   const openGitHub = () => {
     window.open('https://github.com/matt-eric/waveforms')
   }
@@ -142,19 +116,9 @@ function AppBarContainer() {
 
     <div>
 
-      <AppBar position="fixed" className={clsx(classes.appBar, { [classes.appBarShift]: open, })}>
+      <AppBar position="fixed">
 
         <Toolbar>
-
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon/>
-          </IconButton>
 
           <Typography variant='h6' className={classes.headerFont}>
             WAVEFORMS.APP
@@ -177,22 +141,6 @@ function AppBarContainer() {
         </Toolbar>
 
       </AppBar>
-
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{ paper: classes.drawerPaper }}
-      >
-
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-
-      </Drawer>
 
       <main className={clsx(classes.content, { [classes.contentShift]: open, })}>
         <Routing/>
