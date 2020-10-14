@@ -5,14 +5,15 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    position: 'fixed',
+    width: '100vw',
   },
   simulator: {
-
+    overflow: 'none',
+    width: 'auto',
+    pisition: 'relative'
   },
-  effects: {
-
-  }
 }));
 
 function Playground() {
@@ -23,9 +24,7 @@ function Playground() {
 
     <div className={classes.root}>
 
-        <div className={classes.simulator}>
           <Simulator/>
-        </div>
 
     </div>
 
