@@ -7,7 +7,6 @@ import {
   Toolbar,
   Typography,
   IconButton,
-  Button,
 } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BlurOnIcon from '@material-ui/icons/BlurOn';

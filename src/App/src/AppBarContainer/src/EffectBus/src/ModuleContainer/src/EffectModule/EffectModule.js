@@ -1,12 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../../../redux/actions'
+// import { useDispatch } from 'react-redux'
+// import allActions from '../../../../../../../../../redux/actions'
 import Slider from './src/Slider'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import SaveIcon from '@material-ui/icons/Save';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
-import WidgetsIcon from '@material-ui/icons/Widgets';
 import {
   IconButton,
   Paper,
@@ -42,7 +40,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function EffectModule(props){
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const classes = useStyles();
 
@@ -60,12 +58,6 @@ export default function EffectModule(props){
     //   tooltip: 'Save As Preset'
     // },
   ]
-
-  // const {
-  //   effectModules
-  // } = useSelector(state => state.effectBus);
-
-  const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
 
   return (
     <Paper

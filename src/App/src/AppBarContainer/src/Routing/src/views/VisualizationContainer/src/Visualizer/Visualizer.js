@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { PtsCanvas } from 'react-pts-canvas'
 import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
 import { connect } from "react-redux";
-import allActions from '../../../../../../../../../../redux/actions'
 
 class VisualizationConfigurator extends PtsCanvas {
 
@@ -61,9 +60,6 @@ class VisualizationConfigurator extends PtsCanvas {
 }
 
 class Visualizer extends Component {
-  constructor(props) {
-    super(props);
-  }
   render () {
     return (
       <>
