@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Slider from './src/Slider'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import SaveIcon from '@material-ui/icons/Save';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import WidgetsIcon from '@material-ui/icons/Widgets';
 import {
   IconButton,
@@ -29,11 +29,12 @@ const useStyles = makeStyles(theme => ({
   },
   interface: {
     display: 'flex',
-    flexDirecton: 'column'
+    flexDirecton: 'column',
+    marginTop: '30px'
   },
   delete: {
     position: 'relative',
-    marginLeft: '35%'
+    marginLeft: '70%'
   }
 }));
 
@@ -48,14 +49,14 @@ export default function EffectModule(props){
       icon: <PowerSettingsNewIcon />,
       tooltip: 'Bypass'
     },
-    {
-      icon: <WidgetsIcon />,
-      tooltip: 'Module Type'
-    },
-    {
-      icon: <SaveIcon />,
-      tooltip: 'Save As Preset'
-    },
+    // {
+    //   icon: <WidgetsIcon />,
+    //   tooltip: 'Module Type'
+    // },
+    // {
+    //   icon: <SaveIcon />,
+    //   tooltip: 'Save As Preset'
+    // },
   ]
 
   // const {
@@ -69,22 +70,24 @@ export default function EffectModule(props){
       className={classes.module}
       ref={props.innerRef}
       {...props.draggableProps}
-      {...props.dragHandleProps}
     >
       <div className={classes.toolBar}>
         {toolBarIcons.map(obj =>
-          <IconButton color="secondary">
+          <IconButton
+            color="secondary"
+          >
             {obj.icon}
           </IconButton>
         )}
-          <IconButton color="secondary" className={classes.delete}>
-            <DeleteForeverIcon />
+          <IconButton color="secondary"
+            className={classes.delete}
+            {...props.dragHandleProps}
+          >
+            <DragIndicatorIcon/>
           </IconButton>
       </div>
       <div className={classes.interface}>
-
         <Slider/>
-
       </div>
     </Paper>
   );
