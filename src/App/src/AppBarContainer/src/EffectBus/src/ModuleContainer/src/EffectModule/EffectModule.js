@@ -9,7 +9,9 @@ import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import WidgetsIcon from '@material-ui/icons/Widgets';
 import {
   IconButton,
-  Paper
+  Paper,
+  Tooltip,
+  Zoom
  } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -76,14 +78,18 @@ export default function EffectModule(props){
           <IconButton
             color="secondary"
           >
-            {obj.icon}
+            <Tooltip TransitionComponent={Zoom} title={obj.tooltip}>
+              {obj.icon}
+            </Tooltip>
           </IconButton>
         )}
           <IconButton color="secondary"
             className={classes.delete}
             {...props.dragHandleProps}
           >
-            <DragIndicatorIcon/>
+            <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
+              <DragIndicatorIcon/>
+            </Tooltip>
           </IconButton>
       </div>
       <div className={classes.interface}>
