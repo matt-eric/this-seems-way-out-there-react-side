@@ -1,3 +1,3 @@
-[Interactive Demo](https://https://this-seems-way-out-there.web.app/)
+[Live Demo](https://this-seems-way-out-there.web.app/)
 
-This is an evolving project.
+This project is evolving. It's WAY out there.
