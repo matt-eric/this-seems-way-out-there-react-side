@@ -2,5 +2,5 @@
   "name": "EffectBus",
   "version": "0.0.0",
   "private": true,
-  "main": "./src/EffectBus.js"
+  "main": "./EffectBus.js"
 }

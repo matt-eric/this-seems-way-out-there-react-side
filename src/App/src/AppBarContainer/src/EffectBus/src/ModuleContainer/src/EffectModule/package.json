@@ -2,5 +2,5 @@
   "name": "EffectModule",
   "version": "0.0.0",
   "private": true,
-  "main": "./src/EffectModule.js"
+  "main": "./EffectModule.js"
 }

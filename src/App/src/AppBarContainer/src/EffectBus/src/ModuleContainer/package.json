@@ -2,5 +2,5 @@
   "name": "ModuleContainer",
   "version": "0.0.0",
   "private": true,
-  "main": "./src/ModuleContainer.js"
+  "main": "./ModuleContainer.js"
 }

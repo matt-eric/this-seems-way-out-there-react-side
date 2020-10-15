@@ -2,5 +2,5 @@
   "name": "VisualizationContainer",
   "version": "0.0.0",
   "private": true,
-  "main": "./src/VisualizationContainer.js"
+  "main": "./VisualizationContainer.js"
 }
