@@ -4,6 +4,8 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
+import { useDispatch, useSelector } from 'react-redux'
+import allActions from '../../../../../../../../../../../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,12 +50,19 @@ export default function CustomizedSlider() {
 
   const classes = useStyles();
 
+  const dispatch = useDispatch();
+
+  const handleSliderChange = (val) => {
+    dispatch(allActions.effectBusActions.setEffectBusData('sparkleFocus', parseFloat(`.${val}`)))
+  }
+
   return (
     <div className={classes.root}>
       <StyledSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"
         defaultValue={20}
+        onChange={(e, val) => handleSliderChange(val)}
       />
     </div>
   );

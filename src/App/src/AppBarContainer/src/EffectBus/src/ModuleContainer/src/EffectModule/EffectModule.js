@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import { useDispatch, useSelector } from 'react-redux'
-// import allActions from '../../../../../../../../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import allActions from '../../../../../../../../../redux/actions'
 import Slider from './src/Slider'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import SaveIcon from '@material-ui/icons/Save';
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function EffectModule(props){
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const classes = useStyles();
 
@@ -65,7 +65,7 @@ export default function EffectModule(props){
   //   effectModules
   // } = useSelector(state => state.effectBus);
 
-  // const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
+  const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
 
   return (
     <Paper
@@ -93,7 +93,8 @@ export default function EffectModule(props){
           </IconButton>
       </div>
       <div className={classes.interface}>
-        <Slider/>
+        <Slider
+        />
       </div>
     </Paper>
   );
