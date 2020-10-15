@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // import { useDispatch, useSelector } from 'react-redux'
 // import allActions from '../../../../../../../../../redux/actions'
+import Slider from './src/Slider'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
@@ -82,7 +83,7 @@ export default function EffectModule(props){
       </div>
       <div className={classes.interface}>
 
-        {/*interface content goes here*/}
+        <Slider/>
 
       </div>
     </Paper>
