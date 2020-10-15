@@ -1,14 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import { useDispatch, useSelector } from 'react-redux'
-// import allActions from '../../../../../../../../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import allActions from '../../../../../../../../../redux/actions'
+import Slider from './src/Slider'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import SaveIcon from '@material-ui/icons/Save';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import WidgetsIcon from '@material-ui/icons/Widgets';
 import {
   IconButton,
-  Paper
+  Paper,
+  Tooltip,
+  Zoom
  } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
@@ -28,17 +31,18 @@ const useStyles = makeStyles(theme => ({
   },
   interface: {
     display: 'flex',
-    flexDirecton: 'column'
+    flexDirecton: 'column',
+    marginTop: '30px'
   },
   delete: {
     position: 'relative',
-    marginLeft: '35%'
+    marginLeft: '70%'
   }
 }));
 
 export default function EffectModule(props){
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const classes = useStyles();
 
@@ -47,43 +51,50 @@ export default function EffectModule(props){
       icon: <PowerSettingsNewIcon />,
       tooltip: 'Bypass'
     },
-    {
-      icon: <WidgetsIcon />,
-      tooltip: 'Module Type'
-    },
-    {
-      icon: <SaveIcon />,
-      tooltip: 'Save As Preset'
-    },
+    // {
+    //   icon: <WidgetsIcon />,
+    //   tooltip: 'Module Type'
+    // },
+    // {
+    //   icon: <SaveIcon />,
+    //   tooltip: 'Save As Preset'
+    // },
   ]
 
   // const {
   //   effectModules
   // } = useSelector(state => state.effectBus);
 
-  // const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
+  const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
 
   return (
     <Paper
       className={classes.module}
       ref={props.innerRef}
       {...props.draggableProps}
-      {...props.dragHandleProps}
     >
       <div className={classes.toolBar}>
         {toolBarIcons.map(obj =>
-          <IconButton color="secondary">
-            {obj.icon}
+          <IconButton
+            color="secondary"
+          >
+            <Tooltip TransitionComponent={Zoom} title={obj.tooltip}>
+              {obj.icon}
+            </Tooltip>
           </IconButton>
         )}
-          <IconButton color="secondary" className={classes.delete}>
-            <DeleteForeverIcon />
+          <IconButton color="secondary"
+            className={classes.delete}
+            {...props.dragHandleProps}
+          >
+            <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
+              <DragIndicatorIcon/>
+            </Tooltip>
           </IconButton>
       </div>
       <div className={classes.interface}>
-
-        {/*interface content goes here*/}
-
+        <Slider
+        />
       </div>
     </Paper>
   );

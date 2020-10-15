@@ -18,7 +18,7 @@ function App() {
       ?
 
       <div>
-        We are working on optimizing 'This is WAY out there.' for mobile devices. Until then, please use a computer to enjoy This is WAY out there..
+        We are working on optimizing This seems WAY out there. for mobile devices. Until then, please use a computer to enjoy This seems WAY out there..
       </div>
 
       :
