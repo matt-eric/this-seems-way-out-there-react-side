@@ -60,6 +60,7 @@ export default function CustomizedSlider() {
         aria-label="pretto slider"
         defaultValue={20}
         onChange={(e, val) => handleSliderChange(val)}
+        max={99}
       />
     </div>
   );
