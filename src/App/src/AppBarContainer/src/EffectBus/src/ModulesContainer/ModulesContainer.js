@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../../../../../redux/actions'
 
 const useStyles = makeStyles(theme => ({
-  effectModuleContainer: {
+  effectModulesContainer: {
     display: 'flex',
     flexDirection: 'row'
   },
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ModuleContainer(){
+export default function ModulesContainer(){
 
   const dispatch = useDispatch();
 
@@ -81,7 +81,7 @@ export default function ModuleContainer(){
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable" direction="horizontal">
         {(droppableProvided, droppableSnapshot) => (
-          <div className={classes.effectModuleContainer}>
+          <div className={classes.effectModulesContainer}>
             <div>
               <Button className={classes.addButton} variant='contained' onClick={() => addModule()}>
                 <AddIcon fontSize='large'/>
@@ -89,7 +89,7 @@ export default function ModuleContainer(){
             </div>
             <div
               ref={droppableProvided.innerRef}
-              className={classes.effectModuleContainer}
+              className={classes.effectModulesContainer}
             >
               {effectModules && effectModules.map((item, index) => (
                 <Draggable key={item.id} draggableId={item.id} index={index}>

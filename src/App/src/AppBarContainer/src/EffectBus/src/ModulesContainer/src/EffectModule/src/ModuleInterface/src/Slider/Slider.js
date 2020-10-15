@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
 import { useDispatch } from 'react-redux'
-import allActions from '../../../../../../../../../../../redux/actions'
+import allActions from '../../../../../../../../../../../../../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {

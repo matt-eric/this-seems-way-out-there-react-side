@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 // import { useDispatch } from 'react-redux'
 // import allActions from '../../../../../../../../../redux/actions'
-import Slider from './src/Slider'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import {
@@ -27,18 +26,13 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirecton: 'row',
   },
-  interface: {
-    display: 'flex',
-    flexDirecton: 'column',
-    marginTop: '30px'
-  },
   delete: {
     position: 'relative',
     marginLeft: '70%'
   }
 }));
 
-export default function EffectModule(props){
+export default function ModuleToolbar(props){
 
   // const dispatch = useDispatch();
 
@@ -60,34 +54,24 @@ export default function EffectModule(props){
   ]
 
   return (
-    <Paper
-      className={classes.module}
-      ref={props.innerRef}
-      {...props.draggableProps}
-    >
-      <div className={classes.toolBar}>
-        {toolBarIcons.map(obj =>
-          <IconButton
-            color="secondary"
-          >
-            <Tooltip TransitionComponent={Zoom} title={obj.tooltip}>
-              {obj.icon}
-            </Tooltip>
-          </IconButton>
-        )}
-          <IconButton color="secondary"
-            className={classes.delete}
-            {...props.dragHandleProps}
-          >
-            <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
-              <DragIndicatorIcon/>
-            </Tooltip>
-          </IconButton>
-      </div>
-      <div className={classes.interface}>
-        <Slider
-        />
-      </div>
-    </Paper>
+    <div className={classes.toolBar}>
+      {toolBarIcons.map(obj =>
+        <IconButton
+          color="secondary"
+        >
+          <Tooltip TransitionComponent={Zoom} title={obj.tooltip}>
+            {obj.icon}
+          </Tooltip>
+        </IconButton>
+      )}
+        <IconButton color="secondary"
+          className={classes.delete}
+          {...props.dragHandleProps}
+        >
+          <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
+            <DragIndicatorIcon/>
+          </Tooltip>
+        </IconButton>
+    </div>
   );
 }

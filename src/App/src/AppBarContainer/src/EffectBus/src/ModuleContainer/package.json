@@ -1,6 +1,0 @@
-{
-  "name": "ModuleContainer",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./ModuleContainer.js"
-}

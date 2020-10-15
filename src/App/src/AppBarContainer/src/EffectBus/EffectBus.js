@@ -1,5 +1,5 @@
 import React from 'react';
-import ModuleContainer from './src/ModuleContainer'
+import ModulesContainer from './src/ModulesContainer'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
@@ -44,7 +44,7 @@ export default function EffectBus(props) {
 
         <ExpansionPanelDetails >
 
-          <ModuleContainer/>
+          <ModulesContainer/>
 
         </ExpansionPanelDetails>
 
