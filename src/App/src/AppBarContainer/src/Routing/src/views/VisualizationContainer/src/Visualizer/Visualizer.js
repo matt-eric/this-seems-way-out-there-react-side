@@ -19,7 +19,7 @@ class VisualizationConfigurator extends PtsCanvas {
     let gd = Create.gridPts( this.space.innerBound, 20, 20 );
     this.noiseLine = Create.noisePts( ln, 0.1, 0.1 );
     this.noiseGrid = Create.noisePts( gd, 0.05, 0.1, 20, 20 );
-    this.pts = Create.gridCells( this.space.innerBound, 40, 20 );
+    this.pts = Create.gridCells( this.space.innerBound, 15, 15 );
     this.follower = this.space.center;
   }
 
