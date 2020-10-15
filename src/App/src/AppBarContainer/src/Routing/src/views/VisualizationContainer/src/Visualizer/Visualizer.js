@@ -28,10 +28,10 @@ class VisualizationConfigurator extends PtsCanvas {
     let speed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
 
     // Generate noise in a grid
-    this.noiseGrid.map( (p) => {
-      p.step( 0.08*speed.x, 0.08*(1-speed.y) );
-      this.form.fillOnly("#123").point( p, Math.abs( p.noise2D() * this.space.size.x/10 ) );
-    });
+    for(let n=0; n<this.noiseGrid.length; n++){
+      this.noiseGrid[n].step( 0.08*speed.x, 0.08*(1-speed.y) );
+      this.form.fillOnly("#123").point( this.noiseGrid[n], Math.abs( this.noiseGrid[n].noise2D() * this.space.size.x/10 ) );
+    }
 
     this.follower = this.follower.add( this.space.pointer.$subtract( this.follower ).divide(4) );
 
@@ -49,12 +49,12 @@ class VisualizationConfigurator extends PtsCanvas {
     this.form.fill("#76ff03").points( nps, 3, "circle");
 
     // calculate the size and color of each cell based on its distance to the pointer
-    let rects = this.pts.map( (p) => {
-      let mag = this.follower.$subtract( Rectangle.center( p ) ).magnitude()
+    for(let c=0; c<this.pts.length; c++){
+      let mag = this.follower.$subtract( Rectangle.center( this.pts[c] ) ).magnitude()
       let scale = Math.min( 1.5, Math.abs( this.props.sparkleFocus - ( 0.7 * mag / this.space.center.y ) ) );
-      let r = Rectangle.fromCenter( Rectangle.center(p), Rectangle.size(p).multiply( scale ) );
+      let r = Rectangle.fromCenter( Rectangle.center(this.pts[c]), Rectangle.size(this.pts[c]).multiply( scale ) );
       this.form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
-    })
+    }
 
   }
 }
