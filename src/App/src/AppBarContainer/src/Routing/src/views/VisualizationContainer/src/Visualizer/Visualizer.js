@@ -64,13 +64,13 @@ class VisualizationConfigurator extends PtsCanvas {
       invocationAssociations[type]()
     }
 
-    for(let m=0; m<this.props.existingEffects.length; m++){
-      const fx = this.props.existingEffects[m]
+    for(let m=0; m<this.props.effectModules.length; m++){
+      const fx = this.props.effectModules[m]['params']
       associateInvocation(fx)
     }
 
   }
-  
+
 }
 
 class Visualizer extends Component {
@@ -81,7 +81,7 @@ class Visualizer extends Component {
           background="#0c9"
           name="pts-tester"
           style={{opacity: 0.95, height: '100vh'}}
-          existingEffects={this.props.existingEffects}
+          effectModules={this.props.effectModules}
           sparkleFocus={this.props.sparkleFocus}
         />
       </>
@@ -91,7 +91,7 @@ class Visualizer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    existingEffects: state.effectBus.existingEffects,
+    effectModules: state.effectBus.effectModules,
   };
 };
 
