@@ -34,7 +34,8 @@ export default function EffectModule(props){
     innerRef,
     draggableProps,
     dragHandleProps,
-    params
+    params,
+    index
   } = props
 
   return (
@@ -51,7 +52,10 @@ export default function EffectModule(props){
       <Typography variant='h5' className={classes.effectName}>
         {params.displayName}
       </Typography>
-      <ModuleInterface/>
+      <ModuleInterface
+        params={params}
+        index={index}
+      />
     </Paper>
   );
 }

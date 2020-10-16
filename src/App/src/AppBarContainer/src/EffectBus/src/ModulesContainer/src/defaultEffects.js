@@ -10,8 +10,8 @@ export const defaultEffects = [
     settings: {}
   },
   {
-    type: 'cellBlocks',
-    displayName: 'Cell Blocks',
+    type: 'matrix',
+    displayName: 'Matrix',
     settings: {
       sparkleFocus: .87,
     }

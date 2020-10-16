@@ -94,11 +94,12 @@ export default function ModulesContainer(){
               ref={droppableProvided.innerRef}
               className={classes.effectModulesContainer}
             >
-              {effectModules && effectModules.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
+              {effectModules && effectModules.map((effect, index) => (
+                <Draggable key={effect.id} draggableId={effect.id} index={index}>
                   {(draggableProvided, draggableSnapshot) => (
                     <EffectModule
-                      params={item.params}
+                      params={effect.params}
+                      index={index}
                       innerRef={draggableProvided.innerRef}
                       draggableProps={draggableProvided.draggableProps}
                       dragHandleProps={draggableProvided.dragHandleProps}

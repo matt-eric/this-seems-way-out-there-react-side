@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Slider from '@material-ui/core/Slider';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../../../../../../../../../../../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
@@ -43,14 +43,26 @@ const StyledSlider = withStyles({
   },
 })(Slider);
 
-export default function CustomizedSlider() {
+export default function CustomizedSlider(props) {
 
   const classes = useStyles();
 
   const dispatch = useDispatch();
 
+  const {
+    effectModules,
+  } = useSelector(state => state.effectBus);
+
+  const {
+    setting,
+    index,
+    params,
+  } = props
+
   const handleSliderChange = (val) => {
-    dispatch(allActions.effectBusActions.setEffectBusData('sparkleFocus', parseFloat(`.${val}`)))
+    const effectsCopy = [...effectModules]
+    effectsCopy[index]['params']['settings'][setting] = val
+    dispatch(allActions.effectBusActions.setEffectBusData('effectModules', effectsCopy))
   }
 
   return (
@@ -58,9 +70,10 @@ export default function CustomizedSlider() {
       <StyledSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"
-        defaultValue={20}
         onChange={(e, val) => handleSliderChange(val)}
-        max={99}
+        step={.01}
+        max={.99}
+        value={params['settings'][setting]}
       />
     </div>
   );
