@@ -45,7 +45,7 @@ class VisualizationConfigurator extends PtsCanvas {
       form.fill("#76ff03").points( nps, 3, "circle");
     }
 
-    const generateCellBlocks = (space, form, pts, follower, focus) => {
+    const generateMatrix = (space, form, pts, follower, focus) => {
       for(let c=0; c<pts.length; c++){
         let mag = follower.$subtract( Rectangle.center( pts[c] ) ).magnitude()
         let scale = Math.min( 1.5, Math.abs( focus - ( 0.7 * mag / space.center.y ) ) );
@@ -55,11 +55,11 @@ class VisualizationConfigurator extends PtsCanvas {
     }
 
     const associateInvocation = (effect) => {
-      const { type, params } = effect
+      const { type, settings } = effect
       const invocationAssociations = {
         'noiseGrid': () => generateNoiseGrid(this.space, this.form, this.noiseGrid),
         'waveform': () => generateWaveform(this.space, this.form, this.noiseLine),
-        'cellBlocks': () => generateCellBlocks(this.space, this.form, this.pts, this.follower, params.sparkleFocus)
+        'matrix': () => generateMatrix(this.space, this.form, this.pts, this.follower, settings.sparkleFocus)
       }
       invocationAssociations[type]()
     }
