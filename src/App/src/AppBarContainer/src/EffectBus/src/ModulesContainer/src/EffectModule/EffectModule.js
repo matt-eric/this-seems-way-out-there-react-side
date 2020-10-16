@@ -2,7 +2,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ModuleToolbar from './src/ModuleToolbar'
 import ModuleInterface from './src/ModuleInterface'
-import { Paper } from '@material-ui/core';
+import {
+  Paper,
+  Typography
+ } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   module: {
@@ -15,23 +18,39 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
+  effectName: {
+    fontFamily: "'Fascinate', cursive",
+    color: '#26ce9e',
+    display: 'flex',
+    justifyContent: 'center'
+  },
 }));
 
 export default function EffectModule(props){
 
   const classes = useStyles();
 
+  const {
+    innerRef,
+    draggableProps,
+    dragHandleProps,
+    params
+  } = props
+
   return (
     <Paper
       className={classes.module}
-      ref={props.innerRef}
-      {...props.draggableProps}
+      ref={innerRef}
+      {...draggableProps}
     >
       <ModuleToolbar
-        innerRef={props.innerRef}
-        draggableProps={props.draggableProps}
-        dragHandleProps={props.dragHandleProps}
+        innerRef={innerRef}
+        draggableProps={draggableProps}
+        dragHandleProps={dragHandleProps}
       />
+      <Typography variant='h5' className={classes.effectName}>
+        {params.displayName}
+      </Typography>
       <ModuleInterface/>
     </Paper>
   );

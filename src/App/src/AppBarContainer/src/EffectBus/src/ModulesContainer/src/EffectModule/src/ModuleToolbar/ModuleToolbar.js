@@ -38,6 +38,10 @@ export default function ModuleToolbar(props){
 
   const classes = useStyles();
 
+  const {
+    dragHandleProps,
+  } = props
+
   const toolBarIcons = [
     {
       icon: <PowerSettingsNewIcon />,
@@ -66,7 +70,7 @@ export default function ModuleToolbar(props){
       )}
         <IconButton color="secondary"
           className={classes.delete}
-          {...props.dragHandleProps}
+          {...dragHandleProps}
         >
           <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
             <DragIndicatorIcon/>

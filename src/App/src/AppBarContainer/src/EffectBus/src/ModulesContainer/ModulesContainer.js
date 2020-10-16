@@ -98,6 +98,7 @@ export default function ModulesContainer(){
                 <Draggable key={item.id} draggableId={item.id} index={index}>
                   {(draggableProvided, draggableSnapshot) => (
                     <EffectModule
+                      params={item.params}
                       innerRef={draggableProvided.innerRef}
                       draggableProps={draggableProvided.draggableProps}
                       dragHandleProps={draggableProvided.dragHandleProps}
