@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PtsCanvas } from 'react-pts-canvas'
-import { Pt, Create, Rectangle, Color, Circle } from 'pts/dist/es5'
+import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
 import { connect } from "react-redux";
 
 class VisualizationConfigurator extends PtsCanvas {

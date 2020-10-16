@@ -6,7 +6,6 @@ import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import {
   IconButton,
-  Paper,
   Tooltip,
   Zoom
  } from '@material-ui/core';
