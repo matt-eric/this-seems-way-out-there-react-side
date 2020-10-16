@@ -32,7 +32,8 @@ export default function ModulesContainer(){
   const classes = useStyles();
 
   const {
-    effectModules
+    effectModules,
+    existingEffects
   } = useSelector(state => state.effectBus);
 
   const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
@@ -57,17 +58,6 @@ export default function ModulesContainer(){
     setEffectBusData('effectModules', items)
   }
 
-  useEffect(() => {
-    if(!effectModules){
-      const mapModules = (count) =>
-        Array.from({ length: count }, (v, k) => k).map((k) => ({
-          id: `item-${k}`,
-          content: `item ${k}`,
-        }));
-      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(2)))
-    }
-  }, [dispatch, effectModules])
-
   const addModule = () => {
     const mapModules = (count) =>
       Array.from({ length: count }, (v, k) => k).map((k) => ({
@@ -76,6 +66,17 @@ export default function ModulesContainer(){
       }));
     dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(effectModules.length+1)))
   }
+
+  useEffect(() => {
+    if(!effectModules){
+      const mapModules = (count) =>
+        Array.from({ length: count }, (v, k) => k).map((k) => ({
+          id: `item-${k}`,
+          content: `item ${k}`,
+        }));
+      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(existingEffects.length)))
+    }
+  }, [dispatch, effectModules])
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
