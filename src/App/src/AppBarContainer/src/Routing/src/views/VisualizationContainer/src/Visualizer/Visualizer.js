@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PtsCanvas } from 'react-pts-canvas'
-import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
+import { Pt, Create, Rectangle, Color, Circle } from 'pts/dist/es5'
 import { connect } from "react-redux";
 
 class VisualizationConfigurator extends PtsCanvas {
@@ -14,7 +14,6 @@ class VisualizationConfigurator extends PtsCanvas {
   }
 
   start() {
-    // Create a line and a grid, and convert them to `Noise` points
     let ln = Create.distributeLinear( [new Pt(0, this.space.center.y), new Pt(this.space.width, this.space.center.y)], 30 );
     let gd = Create.gridPts( this.space.innerBound, 20, 20 );
     this.noiseLine = Create.noisePts( ln, 0.1, 0.1 );
@@ -24,39 +23,54 @@ class VisualizationConfigurator extends PtsCanvas {
   }
 
   animate( time, ftime ) {
-    // Use pointer position to change speed
-    let speed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
 
-    // Generate noise in a grid
-    for(let n=0; n<this.noiseGrid.length; n++){
-      this.noiseGrid[n].step( 0.08*speed.x, 0.08*(1-speed.y) );
-      this.form.fillOnly("#123").point( this.noiseGrid[n], Math.abs( this.noiseGrid[n].noise2D() * this.space.size.x/10 ) );
-    }
+    let speed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
 
     this.follower = this.follower.add( this.space.pointer.$subtract( this.follower ).divide(4) );
 
-    this.form.stroke("#fff");
+    const generateNoiseGrid = (space, form, noiseGrid) => {
+      for(let n=0; n<noiseGrid.length; n++){
+        noiseGrid[n].step( 0.08*speed.x, 0.08*(1-speed.y) );
+        form.fillOnly("#123").point( noiseGrid[n], Math.abs( noiseGrid[n].noise2D() * space.size.x/10 ) );
+      }
+    }
 
-    // Generate noise in a line
-    let nps = this.noiseLine.map( (p) => {
-      p.step( 0.01*(1-speed.x), 0.05*speed.y );
-      return p.$add( 0, p.noise2D()*this.space.center.y );
-    });
+    const generateWaveform = (space, form, noiseLine) => {
+      let nps = noiseLine.map( (p) => {
+        p.step( 0.01*(1-speed.x), 0.05*speed.y );
+        return p.$add( 0, p.noise2D()*space.center.y );
+      });
+      nps = nps.concat( [space.size, new Pt( 1, space.size.y )] );
+      form.fillOnly("rgba(41, 98, 255, .75)").polygon( nps );
+      form.fill("#76ff03").points( nps, 3, "circle");
+    }
 
-    // Draw wave
-    nps = nps.concat( [this.space.size, new Pt( 1, this.space.size.y )] );
-    this.form.fillOnly("rgba(41, 98, 255, .75)").polygon( nps );
-    this.form.fill("#76ff03").points( nps, 3, "circle");
+    const generateCellBlocks = (space, form, pts, follower, focus) => {
+      for(let c=0; c<pts.length; c++){
+        let mag = follower.$subtract( Rectangle.center( pts[c] ) ).magnitude()
+        let scale = Math.min( 1.5, Math.abs( focus - ( 0.7 * mag / space.center.y ) ) );
+        let r = Rectangle.fromCenter( Rectangle.center(pts[c]), Rectangle.size(pts[c]).multiply( scale ) );
+        form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
+      }
+    }
 
-    // calculate the size and color of each cell based on its distance to the pointer
-    for(let c=0; c<this.pts.length; c++){
-      let mag = this.follower.$subtract( Rectangle.center( this.pts[c] ) ).magnitude()
-      let scale = Math.min( 1.5, Math.abs( this.props.sparkleFocus - ( 0.7 * mag / this.space.center.y ) ) );
-      let r = Rectangle.fromCenter( Rectangle.center(this.pts[c]), Rectangle.size(this.pts[c]).multiply( scale ) );
-      this.form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
+    const associateInvocation = (effect) => {
+      const { type, params } = effect
+      const invocationAssociations = {
+        'noiseGrid': () => generateNoiseGrid(this.space, this.form, this.noiseGrid),
+        'waveform': () => generateWaveform(this.space, this.form, this.noiseLine),
+        'cellBlocks': () => generateCellBlocks(this.space, this.form, this.pts, this.follower, params.sparkleFocus)
+      }
+      invocationAssociations[type]()
+    }
+
+    for(let m=0; m<this.props.existingEffects.length; m++){
+      const fx = this.props.existingEffects[m]
+      associateInvocation(fx)
     }
 
   }
+  
 }
 
 class Visualizer extends Component {
@@ -67,6 +81,7 @@ class Visualizer extends Component {
           background="#0c9"
           name="pts-tester"
           style={{opacity: 0.95, height: '100vh'}}
+          existingEffects={this.props.existingEffects}
           sparkleFocus={this.props.sparkleFocus}
         />
       </>
@@ -76,7 +91,7 @@ class Visualizer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    sparkleFocus: state.effectBus.sparkleFocus,
+    existingEffects: state.effectBus.existingEffects,
   };
 };
 
