@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import EffectModule from './src/EffectModule'
+import { defaultEffects } from './src/defaultEffects.js'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -32,7 +33,7 @@ export default function ModulesContainer(){
   const classes = useStyles();
 
   const {
-    effectModules
+    effectModules,
   } = useSelector(state => state.effectBus);
 
   const setEffectBusData = (type, data) => dispatch(allActions.effectBusActions.setEffectBusData(type, data))
@@ -57,25 +58,27 @@ export default function ModulesContainer(){
     setEffectBusData('effectModules', items)
   }
 
+  const addModule = () => {
+    // const mapModules = (count) =>
+    //   Array.from({ length: count }, (v, k) => k).map((k) => ({
+    //     id: `item-${k}`,
+    //     content: `item ${k}`,
+    //   }));
+    // dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules.length+1))
+  }
+
   useEffect(() => {
     if(!effectModules){
-      const mapModules = (count) =>
-        Array.from({ length: count }, (v, k) => k).map((k) => ({
+      const mapModules = (defaults) =>
+        Array.from({ length: defaults.length }, (v, k) => k).map((v, k) => ({
           id: `item-${k}`,
           content: `item ${k}`,
+          params: defaults[v]
         }));
-      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(2)))
+      const mappedModules = mapModules(defaultEffects)
+      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mappedModules))
     }
   }, [dispatch, effectModules])
-
-  const addModule = () => {
-    const mapModules = (count) =>
-      Array.from({ length: count }, (v, k) => k).map((k) => ({
-        id: `item-${k}`,
-        content: `item ${k}`,
-      }));
-    dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules(effectModules.length+1)))
-  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -91,10 +94,12 @@ export default function ModulesContainer(){
               ref={droppableProvided.innerRef}
               className={classes.effectModulesContainer}
             >
-              {effectModules && effectModules.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
+              {effectModules && effectModules.map((effect, index) => (
+                <Draggable key={effect.id} draggableId={effect.id} index={index}>
                   {(draggableProvided, draggableSnapshot) => (
                     <EffectModule
+                      params={effect.params}
+                      index={index}
                       innerRef={draggableProvided.innerRef}
                       draggableProps={draggableProvided.draggableProps}
                       dragHandleProps={draggableProvided.dragHandleProps}

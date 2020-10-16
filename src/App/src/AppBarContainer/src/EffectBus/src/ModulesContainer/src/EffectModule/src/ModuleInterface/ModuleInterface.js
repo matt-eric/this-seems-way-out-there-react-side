@@ -16,7 +16,8 @@ const useStyles = makeStyles(theme => ({
   interface: {
     display: 'flex',
     flexDirecton: 'column',
-    marginTop: '30px'
+    marginTop: '35px',
+    margin: '20px'
   },
 }));
 
@@ -25,6 +26,11 @@ export default function ModuleInterface(props){
   // const dispatch = useDispatch();
 
   const classes = useStyles();
+
+  const {
+    params,
+    index
+  } = props
 
   const toolBarIcons = [
     {
@@ -43,7 +49,16 @@ export default function ModuleInterface(props){
 
   return (
     <div className={classes.interface}>
-      <Slider/>
+      {
+        params.settings &&
+          Object.keys(params.settings).map(setting =>
+            <Slider
+              setting={setting}
+              params={params}
+              index={index}
+            />
+          )
+      }
     </div>
   );
 }

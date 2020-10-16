@@ -1,6 +1,7 @@
 import React from 'react';
 import Visualizer from './src/Visualizer'
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,11 +21,15 @@ function Playground() {
 
   const classes = useStyles();
 
+  const {
+    effectModules,
+  } = useSelector(state => state.effectBus);
+
   return (
 
     <div className={classes.root}>
 
-      <Visualizer/>
+      { effectModules && <Visualizer/> }
 
     </div>
 

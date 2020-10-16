@@ -1,7 +1,6 @@
 const effectBus = (state = {
   expanded: false,
   effectModules: undefined,
-  sparkleFocus: .87
 }, action) => {
   switch(action.type){
     case `SET_EFFECT_BUS_DATA`:
