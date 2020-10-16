@@ -2,17 +2,17 @@ export const defaultEffects = [
   {
     type: 'noiseGrid',
     displayName: 'Noise Grid',
-    params: {}
+    settings: {}
   },
   {
     type: 'waveform',
     displayName: 'Waveform',
-    params: {}
+    settings: {}
   },
   {
     type: 'cellBlocks',
     displayName: 'Cell Blocks',
-    params: {
+    settings: {
       sparkleFocus: .87,
     }
   }
