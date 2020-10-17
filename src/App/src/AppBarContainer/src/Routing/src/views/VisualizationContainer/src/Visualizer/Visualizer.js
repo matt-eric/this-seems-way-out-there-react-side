@@ -58,8 +58,8 @@ class VisualizationConfigurator extends PtsCanvas {
       const { type, settings } = effect
       const invocationAssociations = {
         'noise': () => generatenoise(this.space, this.form, this.noise),
-        'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha),
-        'gridCells': () => generategridCells(this.space, this.form, this.pts, this.follower, settings.sparkleFocus)
+        'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha.value),
+        'gridCells': () => generategridCells(this.space, this.form, this.pts, this.follower, settings.focus.value)
       }
       invocationAssociations[type]()
     }
@@ -82,7 +82,6 @@ class Visualizer extends Component {
           name="pts-tester"
           style={{opacity: 0.95, height: '100vh'}}
           effectModules={this.props.effectModules}
-          sparkleFocus={this.props.sparkleFocus}
         />
       </>
     )

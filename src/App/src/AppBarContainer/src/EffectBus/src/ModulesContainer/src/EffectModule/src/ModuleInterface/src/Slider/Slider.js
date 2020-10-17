@@ -61,7 +61,7 @@ export default function CustomizedSlider(props) {
 
   const handleSliderChange = (val) => {
     const effectsCopy = [...effectModules]
-    effectsCopy[index]['params']['settings'][setting] = val
+    effectsCopy[index]['params']['settings'][setting]['value'] = val
     dispatch(allActions.effectBusActions.setEffectBusData('effectModules', effectsCopy))
   }
 
@@ -71,9 +71,9 @@ export default function CustomizedSlider(props) {
         valueLabelDisplay="auto"
         aria-label="pretto slider"
         onChange={(e, val) => handleSliderChange(val)}
-        step={.01}
-        max={.99}
-        value={params['settings'][setting]}
+        step={params['settings'][setting]['step']}
+        max={params['settings'][setting]['max']}
+        value={params['settings'][setting]['value']}
       />
     </div>
   );

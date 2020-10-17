@@ -3,7 +3,11 @@ export const defaultEffects = [
     type: 'gridCells',
     displayName: 'Grid Cells',
     settings: {
-      sparkleFocus: .87,
+      focus: {
+        value: .87,
+        max: .99,
+        step: .01
+      }
     }
   },
   {
@@ -15,7 +19,11 @@ export const defaultEffects = [
     type: 'waveform',
     displayName: 'Waveform',
     settings: {
-      alpha: .75
+      alpha: {
+        value: .75,
+        max: .99,
+        step: .01
+      }
     }
   },
 ]
