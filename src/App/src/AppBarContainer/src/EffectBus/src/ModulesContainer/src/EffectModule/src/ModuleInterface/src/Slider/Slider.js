@@ -1,6 +1,9 @@
 import React from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Slider from '@material-ui/core/Slider';
+import {
+  Slider,
+  Typography
+} from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../../../../../../../../../../../redux/actions'
 
@@ -11,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
   margin: {
     height: theme.spacing(3),
   },
+  param: {
+    fontFamily: "'Fascinate', cursive",
+    color: '#26ce9e',
+  }
 }));
 
 const StyledSlider = withStyles({
@@ -59,6 +66,13 @@ export default function CustomizedSlider(props) {
     params,
   } = props
 
+  const {
+    displayName,
+    value,
+    max,
+    step
+  } = params['settings'][setting]
+
   const handleSliderChange = (val) => {
     const effectsCopy = [...effectModules]
     effectsCopy[index]['params']['settings'][setting]['value'] = val
@@ -67,13 +81,16 @@ export default function CustomizedSlider(props) {
 
   return (
     <div className={classes.root}>
+      <Typography className={classes.param}>
+        {displayName}
+      </Typography>
       <StyledSlider
         valueLabelDisplay="auto"
         aria-label="pretto slider"
         onChange={(e, val) => handleSliderChange(val)}
-        step={params['settings'][setting]['step']}
-        max={params['settings'][setting]['max']}
-        value={params['settings'][setting]['value']}
+        step={step}
+        max={max}
+        value={value}
       />
     </div>
   );
