@@ -1,19 +1,21 @@
 export const defaultEffects = [
   {
-    type: 'noiseGrid',
-    displayName: 'Noise Grid',
+    type: 'gridCells',
+    displayName: 'Grid Cells',
+    settings: {
+      sparkleFocus: .87,
+    }
+  },
+  {
+    type: 'noise',
+    displayName: 'Noise',
     settings: {}
   },
   {
     type: 'waveform',
     displayName: 'Waveform',
-    settings: {}
-  },
-  {
-    type: 'matrix',
-    displayName: 'Matrix',
     settings: {
-      sparkleFocus: .87,
+      alpha: .75
     }
-  }
+  },
 ]
