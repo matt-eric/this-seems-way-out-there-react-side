@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const StyledSlider = withStyles({
   root: {
-    color: '#52af77',
+    color: '#69f0ae',
     height: 8,
   },
   thumb: {
@@ -70,6 +70,7 @@ export default function CustomizedSlider(props) {
     displayName,
     value,
     max,
+    min,
     step
   } = params['settings'][setting]
 
@@ -90,6 +91,7 @@ export default function CustomizedSlider(props) {
         onChange={(e, val) => handleSliderChange(val)}
         step={step}
         max={max}
+        min={min}
         value={value}
       />
     </div>

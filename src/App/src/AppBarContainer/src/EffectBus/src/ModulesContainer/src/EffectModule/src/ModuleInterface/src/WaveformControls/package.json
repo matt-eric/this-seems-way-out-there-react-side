@@ -1,0 +1,6 @@
+{
+  "name": "WaveformControls",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./WaveformControls.js"
+}

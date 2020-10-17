@@ -35,14 +35,14 @@ class VisualizationConfigurator extends PtsCanvas {
       }
     }
 
-    const generateWaveform = (space, form, noiseLine, alpha) => {
+    const generateWaveform = (space, form, noiseLine, alpha, points, shape) => {
       let nps = noiseLine.map( (p) => {
         p.step( 0.01*(1-speed.x), 0.05*speed.y );
         return p.$add( 0, p.noise2D()*space.center.y );
       });
       nps = nps.concat( [space.size, new Pt( 1, space.size.y )] );
       form.fillOnly(`rgba(41, 98, 255, ${alpha})`).polygon( nps );
-      form.fill("#76ff03").points( nps, 3, "circle");
+      form.fill("#76ff03").points( nps, points, shape);
     }
 
     const generategridCells = (space, form, pts, follower, focus) => {
@@ -58,7 +58,7 @@ class VisualizationConfigurator extends PtsCanvas {
       const { type, settings } = effect
       const invocationAssociations = {
         'noise': () => generatenoise(this.space, this.form, this.noise),
-        'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha.value),
+        'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha.value, settings.points.value, effect.pointShape),
         'gridCells': () => generategridCells(this.space, this.form, this.pts, this.follower, settings.focus.value)
       }
       invocationAssociations[type]()
