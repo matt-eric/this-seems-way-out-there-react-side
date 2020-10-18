@@ -20,6 +20,36 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const StyledSlider = withStyles({
+  root: {
+    color: '#26ce9e',
+    height: 8,
+  },
+  thumb: {
+    height: 24,
+    width: 24,
+    backgroundColor: '#26ce9e',
+    border: '1px solid #000',
+    marginTop: -8,
+    marginLeft: -12,
+    '&:focus, &:hover, &$active': {
+      boxShadow: 'inherit',
+    },
+  },
+  active: {},
+  valueLabel: {
+    left: 'calc(-50% + 4px)',
+  },
+  track: {
+    height: 8,
+    borderRadius: 4,
+  },
+  rail: {
+    height: 8,
+    borderRadius: 4,
+  },
+})(Slider);
+
 export default function CustomizedSlider(props) {
 
   const classes = useStyles();
@@ -49,36 +79,6 @@ export default function CustomizedSlider(props) {
     effectsCopy[index]['params']['settings'][setting]['value'] = val
     dispatch(allActions.effectBusActions.setEffectBusData('effectModules', effectsCopy))
   }
-
-  const StyledSlider = withStyles({
-    root: {
-      color: '#26ce9e',
-      height: 8,
-    },
-    thumb: {
-      height: 24,
-      width: 24,
-      backgroundColor: effectModules[index]['params']['bypass'] ? '#26ce9e' : '#000',
-      border: '2px solid #26ce9e',
-      marginTop: -8,
-      marginLeft: -12,
-      '&:focus, &:hover, &$active': {
-        boxShadow: 'inherit',
-      },
-    },
-    active: {},
-    valueLabel: {
-      left: 'calc(-50% + 4px)',
-    },
-    track: {
-      height: 8,
-      borderRadius: 4,
-    },
-    rail: {
-      height: 8,
-      borderRadius: 4,
-    },
-  })(Slider);
 
   return (
     <div className={classes.root}>
