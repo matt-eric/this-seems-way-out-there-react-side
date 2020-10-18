@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    border: '1px solid #69f0ae',
+    border: '1px solid #26ce9e',
     borderRadius: '5px',
     padding: '3px',
     marginTop: '10px',
@@ -19,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
   selected: {
   },
   nonSelected: {
-    border: '1px solid #69f0ae',
+    border: '1px solid #26ce9e',
     backgroundColor: 'rgba(105, 240, 174, .5)',
   },
   icon: {
-    color: '#69f0ae',
+    color: '#26ce9e',
   }
 }));
 

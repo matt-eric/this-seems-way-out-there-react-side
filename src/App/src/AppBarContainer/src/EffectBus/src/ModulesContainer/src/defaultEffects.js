@@ -2,12 +2,14 @@ export const defaultEffects = [
   {
     type: 'noise',
     displayName: 'Noise',
+    bypass: false,
     settings: {}
   },
   {
     type: 'waveform',
     displayName: 'Waveform',
     pointShape: "circle",
+    bypass: false,
     settings: {
       alpha: {
         displayName: 'Alpha',
@@ -16,7 +18,7 @@ export const defaultEffects = [
         step: .01
       },
       points: {
-        displayName: 'Point Radius',
+        displayName: 'Point Rdius',
         value: 3,
         max: 15,
         min: 1,
@@ -27,6 +29,7 @@ export const defaultEffects = [
   {
     type: 'gridCells',
     displayName: 'Grid Cells',
+    bypass: false,
     settings: {
       focus: {
         displayName: 'Focus',

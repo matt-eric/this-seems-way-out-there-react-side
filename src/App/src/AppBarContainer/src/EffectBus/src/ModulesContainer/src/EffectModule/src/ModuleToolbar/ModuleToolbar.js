@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import { useDispatch } from 'react-redux'
-// import allActions from '../../../../../../../../../redux/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import allActions from '../../../../../../../../../../../redux/actions'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import {
@@ -25,25 +25,34 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirecton: 'row',
   },
-  delete: {
+  dragIndicator: {
     position: 'relative',
-    marginLeft: '70%'
+    marginLeft: '70%',
+    color: '#69f0ae'
+  },
+  toolbarIcons: {
+    color: '#69f0ae'
   }
 }));
 
 export default function ModuleToolbar(props){
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const classes = useStyles();
 
   const {
+    effectModules,
+  } = useSelector(state => state.effectBus);
+
+  const {
     dragHandleProps,
+    index
   } = props
 
   const toolBarIcons = [
     {
-      icon: <PowerSettingsNewIcon />,
+      icon: <PowerSettingsNewIcon className={classes.toolbarIcons} />,
       tooltip: 'Bypass'
     },
     // {
@@ -56,12 +65,19 @@ export default function ModuleToolbar(props){
     // },
   ]
 
+  const toggleBypass = () => {
+    const effectsCopy = [...effectModules]
+    effectsCopy[index]['params']['bypass'] = !effectModules[index]['params']['bypass']
+    dispatch(allActions.effectBusActions.setEffectBusData('effectModules', effectsCopy))
+  }
+
   return (
     <div className={classes.toolBar}>
       {toolBarIcons.map((obj, i) =>
         <IconButton
           key={`toolbar-button-${i}`}
           color="secondary"
+          onClick={() => toggleBypass()}
         >
           <Tooltip TransitionComponent={Zoom} title={obj.tooltip}>
             {obj.icon}
@@ -69,7 +85,7 @@ export default function ModuleToolbar(props){
         </IconButton>
       )}
         <IconButton color="secondary"
-          className={classes.delete}
+          className={classes.dragIndicator}
           {...dragHandleProps}
         >
           <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
