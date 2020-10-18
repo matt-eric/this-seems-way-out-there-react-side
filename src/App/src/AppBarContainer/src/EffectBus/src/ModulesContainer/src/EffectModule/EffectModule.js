@@ -65,10 +65,12 @@ export default function EffectModule(props){
         <Typography variant='h5' className={classes.effectName}>
           {params.displayName}
         </Typography>
-        <ModuleInterface
-          params={params}
-          index={index}
-        />
+        { !effectModules[index]['params']['bypass'] &&
+          <ModuleInterface
+            params={params}
+            index={index}
+          />
+        }
       </div>
     </Paper>
   );
