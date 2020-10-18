@@ -1,7 +1,7 @@
 import React from 'react';
 import Visualizer from './src/Visualizer'
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux'
+// import { useSelector } from 'react-redux'
 import { WhisperSpinner } from "react-spinners-kit";
 
 const useStyles = makeStyles((theme) => ({
@@ -34,9 +34,9 @@ export default function VisualizationContainer() {
     </div>
   );
 
-  const {
-    effectModules,
-  } = useSelector(state => state.effectBus);
+  // const {
+  //   effectModules,
+  // } = useSelector(state => state.effectBus);
 
   if(!visualizerHasLoaded){
     const fontLoadingProcess = () => {
