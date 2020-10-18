@@ -10,13 +10,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
     width: '100vw',
-    height: '90vh',
+    height: '100vh',
   },
   spinnerContainer: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '50%',
-    marginBottom: '50%'
+    marginTop: '100%',
+    marginBottom: '100%'
   },
 }));
 
