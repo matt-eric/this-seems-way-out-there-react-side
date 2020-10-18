@@ -1,8 +1,10 @@
 import React from 'react';
 import ModulesContainer from './src/ModulesContainer'
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails
+} from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'
 
@@ -33,23 +35,15 @@ export default function EffectBus(props) {
   return(
 
     <div className={classes.root}>
-
-      <ExpansionPanel className={classes.panel} expanded={expanded}>
-
-        <ExpansionPanelSummary
+      <Accordion className={classes.panel} expanded={expanded}>
+        <AccordionSummary
           aria-controls="panel1a-content"
           style={{display: 'none'}}
-        >
-        </ExpansionPanelSummary>
-
-        <ExpansionPanelDetails >
-
+        />
+        <AccordionDetails >
           <ModulesContainer/>
-
-        </ExpansionPanelDetails>
-
-      </ExpansionPanel>
-
+        </AccordionDetails>
+      </Accordion>
     </div>
 
   )
