@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-// import { useDispatch } from 'react-redux'
 // import allActions from '../../../../../../../../../redux/actions'
 import Slider from './src/Slider'
 import WaveformControls from './src/WaveformControls'
@@ -16,8 +15,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ModuleInterface(props){
-
-  // const dispatch = useDispatch();
 
   const classes = useStyles();
 
@@ -39,7 +36,7 @@ export default function ModuleInterface(props){
   }
 
   return (
-    <div className={classes.interface}>
+    <div className={classes.interface} >
       {
         settings &&
           Object.keys(settings).map((setting, i) =>
@@ -51,7 +48,7 @@ export default function ModuleInterface(props){
             />
           )
       }
-      {moduleSpecificElements(type, index)}
+      { moduleSpecificElements(type, index) }
     </div>
   );
 }

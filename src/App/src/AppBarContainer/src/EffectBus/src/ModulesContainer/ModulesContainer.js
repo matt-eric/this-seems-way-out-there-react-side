@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   addButton: {
     height: '300px',
     color: '#69f0ae',
-    backgroundColor: '#04080a',
+    backgroundColor: '#000',
     border: '2px solid #69f0ae',
     margin: '12.5px',
     '&:hover': {

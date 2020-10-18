@@ -65,8 +65,10 @@ class VisualizationConfigurator extends PtsCanvas {
     }
 
     for(let m=0; m<this.props.effectModules.length; m++){
-      const fx = this.props.effectModules[m]['params']
-      associateInvocation(fx)
+      // debugger
+      if(!this.props.effectModules[m]['params'].bypass){
+        associateInvocation(this.props.effectModules[m]['params'])
+      }
     }
 
   }

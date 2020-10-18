@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ModuleToolbar from './src/ModuleToolbar'
 import ModuleInterface from './src/ModuleInterface'
+import { useSelector } from 'react-redux'
 import {
   Paper,
   Typography
@@ -13,10 +14,11 @@ const useStyles = makeStyles(theme => ({
     height: '300px',
     margin: '5px',
     padding: '5px',
-    backgroundColor: '#04080a',
+    backgroundColor: '#000',
     border: '2px solid #69f0ae',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    overflow: 'hidden'
   },
   effectName: {
     fontFamily: "'Fascinate', cursive",
@@ -24,11 +26,20 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center'
   },
+  bypass: {
+    backgroundColor: '#009760',
+    width: '300px',
+    height: '300px',
+  },
 }));
 
 export default function EffectModule(props){
 
   const classes = useStyles();
+
+  const {
+    effectModules,
+  } = useSelector(state => state.effectBus);
 
   const {
     innerRef,
@@ -44,18 +55,21 @@ export default function EffectModule(props){
       ref={innerRef}
       {...draggableProps}
     >
-      <ModuleToolbar
-        innerRef={innerRef}
-        draggableProps={draggableProps}
-        dragHandleProps={dragHandleProps}
-      />
-      <Typography variant='h5' className={classes.effectName}>
-        {params.displayName}
-      </Typography>
-      <ModuleInterface
-        params={params}
-        index={index}
-      />
+      <div className={effectModules[index]['params']['bypass'] && classes.bypass}>
+        <ModuleToolbar
+          index={index}
+          innerRef={innerRef}
+          draggableProps={draggableProps}
+          dragHandleProps={dragHandleProps}
+        />
+        <Typography variant='h5' className={classes.effectName}>
+          {params.displayName}
+        </Typography>
+        <ModuleInterface
+          params={params}
+          index={index}
+        />
+      </div>
     </Paper>
   );
 }

@@ -1,9 +1,9 @@
 export const theme = {
   palette: {
     primary: {
-      light: '#2e3132',
-      main: '#04080a',
-      dark: '#000000',
+      light: '#010101',
+      main: '#010101',
+      dark: '#010101',
       contrastText: '#fff',
     },
     secondary: {

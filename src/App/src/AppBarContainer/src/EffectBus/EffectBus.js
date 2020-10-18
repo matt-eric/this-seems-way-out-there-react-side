@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '3em',
   },
   panel: {
-    backgroundColor: '#04080a',
+    backgroundColor: '#000',
     opacity: '.75'
   }
 }));
