@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { loadCSS } from 'fg-loadcss';
 import clsx from 'clsx';
 import {
   AppBar,
@@ -94,17 +93,6 @@ function AppBarContainer() {
   const handleDrawerState = () => {
     dispatch(allActions.effectBusActions.setEffectBusData( 'expanded', !expanded ))
   }
-
-  React.useEffect(() => {
-    const node = loadCSS(
-      'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
-      document.querySelector('#font-awesome-css'),
-    );
-
-    return () => {
-      node.parentNode.removeChild(node);
-    };
-  }, []);
 
   return (
 
