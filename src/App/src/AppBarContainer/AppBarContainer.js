@@ -14,6 +14,7 @@ import InfoPopover from './src/InfoPopover'
 import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../redux/actions'
 import EffectBus from './src/EffectBus'
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   content: {
+    backgroundColor: '#010101',
     flexGrow: 1,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -50,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   contentShift: {
+    backgroundColor: '#010101',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -73,6 +76,10 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     color: '#26ce9e',
+  },
+  loader: {
+    marginLeft: '150px',
+    marginBottom: '10px'
   }
 }));
 
@@ -81,6 +88,16 @@ function AppBarContainer() {
   const dispatch = useDispatch();
   const classes = useStyles();
   const [open] = React.useState(false);
+  const [fontHasLoaded, setFontHasLoaded] = React.useState(false)
+  const [header, setHeader] = React.useState(
+    <div className={classes.loader} >
+      <PropagateLoader
+        size={15}
+        color={"#26ce9e"}
+        loading={true}
+      />
+    </div>
+  );
 
   const {
     expanded
@@ -94,6 +111,18 @@ function AppBarContainer() {
     dispatch(allActions.effectBusActions.setEffectBusData( 'expanded', !expanded ))
   }
 
+  if(!fontHasLoaded){
+    const fontLoadingProcess = () => {
+      setHeader(
+        <Typography rel="preload" variant='h5' className={classes.headerFont}>
+          This seems WAY out there.
+        </Typography>
+      )
+      setFontHasLoaded(true)
+    }
+    setTimeout( fontLoadingProcess, 1300)
+  }
+
   return (
 
     <div>
@@ -102,9 +131,7 @@ function AppBarContainer() {
 
         <Toolbar>
 
-          <Typography variant='h5' className={classes.headerFont}>
-            This seems WAY out there.
-          </Typography>
+          { header }
 
           <div className={classes.iconButtons}>
 
