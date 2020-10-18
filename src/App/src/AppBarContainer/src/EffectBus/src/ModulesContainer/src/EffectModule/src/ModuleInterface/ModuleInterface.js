@@ -42,8 +42,9 @@ export default function ModuleInterface(props){
     <div className={classes.interface}>
       {
         settings &&
-          Object.keys(settings).map(setting =>
+          Object.keys(settings).map((setting, i) =>
             <Slider
+              key={`parameter-slider-${i}`}
               setting={setting}
               params={params}
               index={index}

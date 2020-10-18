@@ -58,8 +58,9 @@ export default function ModuleToolbar(props){
 
   return (
     <div className={classes.toolBar}>
-      {toolBarIcons.map(obj =>
+      {toolBarIcons.map((obj, i) =>
         <IconButton
+          key={`toolbar-button-${i}`}
           color="secondary"
         >
           <Tooltip TransitionComponent={Zoom} title={obj.tooltip}>
