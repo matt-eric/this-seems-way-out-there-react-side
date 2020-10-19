@@ -3,7 +3,22 @@ export const defaultEffects = [
     type: 'noise',
     displayName: 'Noise',
     bypass: false,
-    settings: {}
+    settings: {
+      behavior: {
+        displayName: 'Behavior',
+        value: 10,
+        max: 40,
+        min: 1,
+        step: 1
+      },
+      speed: {
+        displayName: 'Speed',
+        value: .08,
+        max: .1,
+        min: .01,
+        step: .01
+      },
+    }
   },
   {
     type: 'waveform',
@@ -36,6 +51,20 @@ export const defaultEffects = [
         value: .87,
         max: .99,
         step: .01
+      },
+      columns: {
+        displayName: 'Columns',
+        value: 15,
+        max: 15,
+        min: 1,
+        step: 1
+      },
+      rows: {
+        displayName: 'Rows',
+        value: 15,
+        max: 15,
+        min: 1,
+        step: 1
       }
     }
   },

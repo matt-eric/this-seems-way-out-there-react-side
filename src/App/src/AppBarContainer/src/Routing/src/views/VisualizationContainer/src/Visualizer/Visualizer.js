@@ -18,26 +18,25 @@ class VisualizationConfigurator extends PtsCanvas {
     let gd = Create.gridPts( this.space.innerBound, 20, 20 );
     this.noiseLine = Create.noisePts( ln, 0.1, 0.1 );
     this.noise = Create.noisePts( gd, 0.05, 0.1, 20, 20 );
-    this.pts = Create.gridCells( this.space.innerBound, 15, 15 );
     this.follower = this.space.center;
   }
 
   animate( time, ftime ) {
 
-    let speed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
+    let ptsSpeed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
 
     this.follower = this.follower.add( this.space.pointer.$subtract( this.follower ).divide(4) );
 
-    const generatenoise = (space, form, noise) => {
+    const generateNoise = (space, form, noise, behavior, speed) => {
       for(let n=0; n<noise.length; n++){
-        noise[n].step( 0.08*speed.x, 0.08*(1-speed.y) );
-        form.fillOnly("#123").point( noise[n], Math.abs( noise[n].noise2D() * space.size.x/10 ) );
+        noise[n].step( speed * ptsSpeed.x, speed * (1-ptsSpeed.y) );
+        form.fillOnly("#123").point( noise[n], Math.abs( noise[n].noise2D() * space.size.x/behavior ) );
       }
     }
 
     const generateWaveform = (space, form, noiseLine, alpha, points, shape) => {
       let nps = noiseLine.map( (p) => {
-        p.step( 0.01*(1-speed.x), 0.05*speed.y );
+        p.step( 0.01*(1-ptsSpeed.x), 0.05*ptsSpeed.y );
         return p.$add( 0, p.noise2D()*space.center.y );
       });
       nps = nps.concat( [space.size, new Pt( 1, space.size.y )] );
@@ -45,7 +44,8 @@ class VisualizationConfigurator extends PtsCanvas {
       form.fill("#76ff03").points( nps, points, shape);
     }
 
-    const generategridCells = (space, form, pts, follower, focus) => {
+    const generateGridCells = (space, form, follower, focus, columns, rows) => {
+      let pts = Create.gridCells( this.space.innerBound, columns, rows );
       for(let c=0; c<pts.length; c++){
         let mag = follower.$subtract( Rectangle.center( pts[c] ) ).magnitude()
         let scale = Math.min( 1.5, Math.abs( focus - ( 0.7 * mag / space.center.y ) ) );
@@ -57,9 +57,9 @@ class VisualizationConfigurator extends PtsCanvas {
     const associateInvocation = (effect) => {
       const { type, settings } = effect
       const invocationAssociations = {
-        'noise': () => generatenoise(this.space, this.form, this.noise),
+        'noise': () => generateNoise(this.space, this.form, this.noise, settings.behavior.value, settings.speed.value),
         'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha.value, settings.points.value, effect.pointShape),
-        'gridCells': () => generategridCells(this.space, this.form, this.pts, this.follower, settings.focus.value)
+        'gridCells': () => generateGridCells(this.space, this.form, this.follower, settings.focus.value, settings.columns.value, settings.rows.value, )
       }
       invocationAssociations[type]()
     }

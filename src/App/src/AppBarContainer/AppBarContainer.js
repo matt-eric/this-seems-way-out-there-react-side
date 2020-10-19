@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   content: {
-    backgroundColor: '#010101',
+    backgroundColor: '#000',
     flexGrow: 1,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     }),
   },
   contentShift: {
-    backgroundColor: '#010101',
+    backgroundColor: '#000',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -78,8 +78,8 @@ const useStyles = makeStyles((theme) => ({
     color: '#26ce9e',
   },
   loader: {
-    marginLeft: '150px',
-    marginBottom: '10px'
+    marginLeft: '145px',
+    marginBottom: '16px'
   }
 }));
 
@@ -120,7 +120,7 @@ function AppBarContainer() {
       )
       setFontHasLoaded(true)
     }
-    setTimeout( fontLoadingProcess, 1300)
+    setTimeout( fontLoadingProcess, 1750)
   }
 
   return (
