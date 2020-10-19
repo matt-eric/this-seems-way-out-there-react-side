@@ -78,8 +78,8 @@ const useStyles = makeStyles((theme) => ({
     color: '#26ce9e',
   },
   loader: {
-    marginLeft: '150px',
-    marginBottom: '10px'
+    marginLeft: '145px',
+    marginBottom: '16px'
   }
 }));
 
@@ -120,7 +120,7 @@ function AppBarContainer() {
       )
       setFontHasLoaded(true)
     }
-    setTimeout( fontLoadingProcess, 1300)
+    setTimeout( fontLoadingProcess, 1750)
   }
 
   return (
