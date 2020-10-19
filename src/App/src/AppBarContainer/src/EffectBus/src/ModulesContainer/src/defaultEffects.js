@@ -36,6 +36,20 @@ export const defaultEffects = [
         value: .87,
         max: .99,
         step: .01
+      },
+      columns: {
+        displayName: 'Columns',
+        value: 15,
+        max: 15,
+        min: 1,
+        step: 1
+      },
+      rows: {
+        displayName: 'Rows',
+        value: 15,
+        max: 15,
+        min: 1,
+        step: 1
       }
     }
   },
