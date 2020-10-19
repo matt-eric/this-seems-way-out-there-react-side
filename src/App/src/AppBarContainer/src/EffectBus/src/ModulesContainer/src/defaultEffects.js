@@ -3,7 +3,22 @@ export const defaultEffects = [
     type: 'noise',
     displayName: 'Noise',
     bypass: false,
-    settings: {}
+    settings: {
+      behavior: {
+        displayName: 'Behavior',
+        value: 10,
+        max: 40,
+        min: 3,
+        step: 1
+      },
+      speed: {
+        displayName: 'Speed',
+        value: .08,
+        max: .1,
+        min: .01,
+        step: .01
+      },
+    }
   },
   {
     type: 'waveform',
