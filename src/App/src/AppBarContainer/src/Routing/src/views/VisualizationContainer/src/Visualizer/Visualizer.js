@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PtsCanvas } from 'react-pts-canvas'
-import { Pt, Create, Rectangle, Circle, Color } from 'pts/dist/es5'
+import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
 import { connect } from "react-redux";
 
 class VisualizationConfigurator extends PtsCanvas {
@@ -23,20 +23,20 @@ class VisualizationConfigurator extends PtsCanvas {
 
   animate( time, ftime ) {
 
-    let speed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
+    let ptsSpeed = this.space.pointer.$subtract( this.space.center ).divide( this.space.center ).abs();
 
     this.follower = this.follower.add( this.space.pointer.$subtract( this.follower ).divide(4) );
 
-    const generatenoise = (space, form, noise) => {
+    const generateNoise = (space, form, noise, behavior, speed) => {
       for(let n=0; n<noise.length; n++){
-        noise[n].step( 0.08*speed.x, 0.08*(1-speed.y) );
-        form.fillOnly("#123").point( noise[n], Math.abs( noise[n].noise2D() * space.size.x/10 ) );
+        noise[n].step( speed * ptsSpeed.x, speed * (1-ptsSpeed.y) );
+        form.fillOnly("#123").point( noise[n], Math.abs( noise[n].noise2D() * space.size.x/behavior ) );
       }
     }
 
     const generateWaveform = (space, form, noiseLine, alpha, points, shape) => {
       let nps = noiseLine.map( (p) => {
-        p.step( 0.01*(1-speed.x), 0.05*speed.y );
+        p.step( 0.01*(1-ptsSpeed.x), 0.05*ptsSpeed.y );
         return p.$add( 0, p.noise2D()*space.center.y );
       });
       nps = nps.concat( [space.size, new Pt( 1, space.size.y )] );
@@ -57,7 +57,7 @@ class VisualizationConfigurator extends PtsCanvas {
     const associateInvocation = (effect) => {
       const { type, settings } = effect
       const invocationAssociations = {
-        'noise': () => generatenoise(this.space, this.form, this.noise),
+        'noise': () => generateNoise(this.space, this.form, this.noise, settings.behavior.value, settings.speed.value),
         'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha.value, settings.points.value, effect.pointShape),
         'gridCells': () => generateGridCells(this.space, this.form, this.follower, settings.focus.value, settings.columns.value, settings.rows.value, )
       }
