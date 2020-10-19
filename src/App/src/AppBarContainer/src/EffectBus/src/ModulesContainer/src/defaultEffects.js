@@ -8,7 +8,7 @@ export const defaultEffects = [
         displayName: 'Behavior',
         value: 10,
         max: 40,
-        min: 3,
+        min: 1,
         step: 1
       },
       speed: {
