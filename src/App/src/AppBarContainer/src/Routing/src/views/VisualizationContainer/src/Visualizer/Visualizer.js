@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { PtsCanvas } from 'react-pts-canvas'
-import { Pt, Create, Rectangle, Color } from 'pts/dist/es5'
+import { Pt, Create, Rectangle, Circle, Color } from 'pts/dist/es5'
 import { connect } from "react-redux";
 
 class VisualizationConfigurator extends PtsCanvas {
@@ -18,7 +18,6 @@ class VisualizationConfigurator extends PtsCanvas {
     let gd = Create.gridPts( this.space.innerBound, 20, 20 );
     this.noiseLine = Create.noisePts( ln, 0.1, 0.1 );
     this.noise = Create.noisePts( gd, 0.05, 0.1, 20, 20 );
-    this.pts = Create.gridCells( this.space.innerBound, 15, 15 );
     this.follower = this.space.center;
   }
 
@@ -45,7 +44,8 @@ class VisualizationConfigurator extends PtsCanvas {
       form.fill("#76ff03").points( nps, points, shape);
     }
 
-    const generategridCells = (space, form, pts, follower, focus) => {
+    const generateGridCells = (space, form, follower, focus, columns, rows) => {
+      let pts = Create.gridCells( this.space.innerBound, columns, rows );
       for(let c=0; c<pts.length; c++){
         let mag = follower.$subtract( Rectangle.center( pts[c] ) ).magnitude()
         let scale = Math.min( 1.5, Math.abs( focus - ( 0.7 * mag / space.center.y ) ) );
@@ -59,7 +59,7 @@ class VisualizationConfigurator extends PtsCanvas {
       const invocationAssociations = {
         'noise': () => generatenoise(this.space, this.form, this.noise),
         'waveform': () => generateWaveform(this.space, this.form, this.noiseLine, settings.alpha.value, settings.points.value, effect.pointShape),
-        'gridCells': () => generategridCells(this.space, this.form, this.pts, this.follower, settings.focus.value)
+        'gridCells': () => generateGridCells(this.space, this.form, this.follower, settings.focus.value, settings.columns.value, settings.rows.value, )
       }
       invocationAssociations[type]()
     }
