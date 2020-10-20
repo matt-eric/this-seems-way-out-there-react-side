@@ -1,5 +1,6 @@
 import React from 'react';
 import ModulesContainer from './src/ModulesContainer'
+import OptionsInterface from './src/OptionsInterface'
 import {
   Accordion,
   AccordionSummary,
@@ -21,6 +22,10 @@ const useStyles = makeStyles(theme => ({
   panel: {
     backgroundColor: '#000',
     opacity: '.75'
+  },
+  accordianDetails: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 }));
 
@@ -40,7 +45,8 @@ export default function EffectBus(props) {
           aria-controls="panel1a-content"
           style={{display: 'none'}}
         />
-        <AccordionDetails >
+        <AccordionDetails className={classes.accordianDetails}>
+          <OptionsInterface/>
           <ModulesContainer/>
         </AccordionDetails>
       </Accordion>

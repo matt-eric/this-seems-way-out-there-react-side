@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
-import Routing from './src/Routing'
+import VisualizationContainer from './src/VisualizationContainer'
 import InfoPopover from './src/InfoPopover'
 import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../redux/actions'
@@ -148,7 +148,7 @@ function AppBarContainer() {
       </AppBar>
 
       <main className={clsx(classes.content, { [classes.contentShift]: open, })}>
-        <Routing/>
+        <VisualizationContainer/>
       </main>
 
       <AppBar position="fixed" className={classes.bottomAppBar}>
