@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../redux/actions'
+import allActions from '../../../../../../../../../redux/actions'
 
 const useStyles = makeStyles(theme => ({
   effectModulesContainer: {

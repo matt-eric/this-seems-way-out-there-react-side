@@ -8,8 +8,8 @@ function Routing() {
       {
         path: '/',
         exact: true,
-        name: 'VisualizationContainer',
-        component: React.lazy(() => import('./src/views/VisualizationContainer'))
+        name: 'EffectBus',
+        component: React.lazy(() => import('./src/EffectBus'))
       },
     ]
   )

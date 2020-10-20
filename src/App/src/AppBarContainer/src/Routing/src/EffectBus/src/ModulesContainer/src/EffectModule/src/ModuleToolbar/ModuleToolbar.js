@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../../../../../redux/actions'
+import allActions from '../../../../../../../../../../../../../redux/actions'
 import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import DragIndicatorIcon from '@material-ui/icons/DragIndicator';
 import {

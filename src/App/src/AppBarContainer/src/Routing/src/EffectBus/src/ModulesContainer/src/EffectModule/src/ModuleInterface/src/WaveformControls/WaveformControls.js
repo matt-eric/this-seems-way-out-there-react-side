@@ -3,7 +3,7 @@ import StopIcon from '@material-ui/icons/Stop';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../../../../../../../redux/actions'
+import allActions from '../../../../../../../../../../../../../../../redux/actions'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({

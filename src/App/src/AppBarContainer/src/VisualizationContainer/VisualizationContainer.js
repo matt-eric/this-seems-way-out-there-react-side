@@ -40,9 +40,7 @@ export default function VisualizationContainer() {
 
   if(!visualizerHasLoaded){
     const fontLoadingProcess = () => {
-      setContent(
-        <Visualizer/>
-      )
+      setContent( <Visualizer/> )
       setVisualizerHasLoaded(true)
     }
     setTimeout( fontLoadingProcess, 1500)
