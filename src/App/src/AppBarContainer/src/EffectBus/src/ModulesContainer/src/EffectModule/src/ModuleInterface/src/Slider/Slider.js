@@ -5,7 +5,7 @@ import {
   Typography
 } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../../../../../../../../../redux/actions'
+import allActions from '../../../../../../../../../../../../../redux/actions'
 
 const useStyles = makeStyles((theme) => ({
   root: {

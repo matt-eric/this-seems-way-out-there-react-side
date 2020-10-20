@@ -13,7 +13,7 @@ import VisualizationContainer from './src/VisualizationContainer'
 import InfoPopover from './src/InfoPopover'
 import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../redux/actions'
-import Routing from './src/Routing'
+import EffectBus from './src/EffectBus'
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const useStyles = makeStyles((theme) => ({
@@ -163,7 +163,7 @@ function AppBarContainer() {
 
       </AppBar>
 
-      <Routing/>
+      <EffectBus/>
 
     </div>
 

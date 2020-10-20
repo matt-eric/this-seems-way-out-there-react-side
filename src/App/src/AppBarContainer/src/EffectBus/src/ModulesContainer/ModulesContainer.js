@@ -2,23 +2,27 @@ import React, { useEffect } from 'react';
 import EffectModule from './src/EffectModule'
 import { defaultEffects } from './src/defaultEffects.js'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux'
-import allActions from '../../../../../../../../../redux/actions'
+import allActions from '../../../../../../../redux/actions'
 
 const useStyles = makeStyles(theme => ({
   effectModulesContainer: {
     display: 'flex',
     flexDirection: 'row'
   },
-  addButton: {
+  optionsContainer: {
     height: '300px',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  optionsButton: {
     color: '#69f0ae',
     backgroundColor: '#000',
-    border: '2px solid #69f0ae',
-    margin: '12.5px',
+    border: '1px solid #69f0ae',
+    marginTop: '5px',
+    marginBottom: '10px',
+    marginRight: '10px',
     '&:hover': {
         backgroundColor: '#04080a',
         color: '#69f0ae'
@@ -58,15 +62,6 @@ export default function ModulesContainer(){
     setEffectBusData('effectModules', items)
   }
 
-  const addModule = () => {
-    // const mapModules = (count) =>
-    //   Array.from({ length: count }, (v, k) => k).map((k) => ({
-    //     id: `item-${k}`,
-    //     content: `item ${k}`,
-    //   }));
-    // dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules.length+1))
-  }
-
   useEffect(() => {
     if(!effectModules){
       const mapModules = (defaults) =>
@@ -84,12 +79,7 @@ export default function ModulesContainer(){
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="droppable" direction="horizontal">
         {(droppableProvided, droppableSnapshot) => (
-          <div className={classes.effectModulesContainer}>
-            <div>
-              <Button className={classes.addButton} variant='contained' onClick={() => addModule()}>
-                <AddIcon fontSize='large'/>
-              </Button>
-            </div>
+          <div>
             <div
               ref={droppableProvided.innerRef}
               className={classes.effectModulesContainer}
