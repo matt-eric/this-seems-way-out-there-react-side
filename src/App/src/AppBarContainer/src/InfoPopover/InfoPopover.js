@@ -52,7 +52,7 @@ export default function InfoPopover() {
         }}
       >
         <Typography className={classes.typography}>
-          This is a development environment of an evolving project. Some features may not work as expected. Enjoy.
+          Programmatic generation of visualizations based on mouse/touch placement and movement. Use the effect bus below to tweak parameters and reorder modules. This is a free and open-source product that is continuously evolving.
         </Typography>
       </Popover>
     </div>
