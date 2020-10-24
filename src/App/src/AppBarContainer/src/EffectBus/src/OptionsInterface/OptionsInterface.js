@@ -67,17 +67,25 @@ export default function ModulesContainer(){
         close={close}
       />
 
-      <Tooltip TransitionComponent={Zoom} title={'Sign In'} placement="right">
-        <Button className={classes.optionsButton} variant='contained' onClick={() => toggleAuthenticator()}>
-          <CloudIcon fontSize='large'/>
-        </Button>
-      </Tooltip>
+      { process.env.REACT_APP_VERSION === 'development' &&
 
-      <Tooltip TransitionComponent={Zoom} title={'Add Effect Module'} placement="right">
-        <Button className={classes.optionsButton} variant='contained' onClick={() => addModule()}>
-          <AddIcon fontSize='large'/>
-        </Button>
-      </Tooltip>
+        <>
+
+          <Tooltip TransitionComponent={Zoom} title={'Sign In'} placement="right">
+            <Button className={classes.optionsButton} variant='contained' onClick={() => toggleAuthenticator()}>
+              <CloudIcon fontSize='large'/>
+            </Button>
+          </Tooltip>
+
+          <Tooltip TransitionComponent={Zoom} title={'Add Effect Module'} placement="right">
+            <Button className={classes.optionsButton} variant='contained' onClick={() => addModule()}>
+              <AddIcon fontSize='large'/>
+            </Button>
+          </Tooltip>
+
+        </>
+
+      }
 
     </div>
 
