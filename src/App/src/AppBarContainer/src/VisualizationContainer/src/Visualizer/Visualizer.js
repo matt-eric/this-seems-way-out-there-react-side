@@ -14,10 +14,10 @@ class VisualizationConfigurator extends PtsCanvas {
   }
 
   start() {
-    let ln = Create.distributeLinear( [new Pt(0, this.space.center.y), new Pt(this.space.width, this.space.center.y)], 30 );
-    let gd = Create.gridPts( this.space.innerBound, 20, 20 );
-    this.noiseLine = Create.noisePts( ln, 0.1, 0.1 );
-    this.noise = Create.noisePts( gd, 0.05, 0.1, 20, 20 );
+    let line = Create.distributeLinear( [new Pt(0, this.space.center.y), new Pt(this.space.width, this.space.center.y)], 30 );
+    let grid = Create.gridPts( this.space.innerBound, 20, 20 );
+    this.noiseLine = Create.noisePts( line, 0.1, 0.1 );
+    this.noise = Create.noisePts( grid, 0.05, 0.1, 20, 20 );
     this.follower = this.space.center;
   }
 
@@ -35,22 +35,22 @@ class VisualizationConfigurator extends PtsCanvas {
     }
 
     const generateWaveform = (space, form, noiseLine, alpha, points, shape) => {
-      let nps = noiseLine.map( (p) => {
+      let waveSpeed = noiseLine.map( (p) => {
         p.step( 0.01*(1-ptsSpeed.x), 0.05*ptsSpeed.y );
         return p.$add( 0, p.noise2D()*space.center.y );
       });
-      nps = nps.concat( [space.size, new Pt( 1, space.size.y )] );
-      form.fillOnly(`rgba(41, 98, 255, ${alpha})`).polygon( nps );
-      form.fill("#76ff03").points( nps, points, shape);
+      waveSpeed = waveSpeed.concat( [space.size, new Pt( 1, space.size.y )] );
+      form.fillOnly(`rgba(41, 98, 255, ${alpha})`).polygon( waveSpeed );
+      form.fill("#76ff03").points( waveSpeed, points, shape);
     }
 
     const generateGridCells = (space, form, follower, focus, columns, rows) => {
       let pts = Create.gridCells( this.space.innerBound, columns, rows );
-      for(let c=0; c<pts.length; c++){
-        let mag = follower.$subtract( Rectangle.center( pts[c] ) ).magnitude()
-        let scale = Math.min( 1.5, Math.abs( focus - ( 0.7 * mag / space.center.y ) ) );
-        let r = Rectangle.fromCenter( Rectangle.center(pts[c]), Rectangle.size(pts[c]).multiply( scale ) );
-        form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( r );
+      for(let cell=0; cell<pts.length; cell++){
+        let magnitude = follower.$subtract( Rectangle.center( pts[cell] ) ).magnitude()
+        let scale = Math.min( 1.5, Math.abs( focus - ( 0.7 * magnitude / space.center.y ) ) );
+        let rectangle = Rectangle.fromCenter( Rectangle.center(pts[cell]), Rectangle.size(pts[cell]).multiply( scale ) );
+        form.fill( Color.HSLtoRGB( Color.hsl( scale*210, 1, 3 ) ).hex ).rect( rectangle );
       }
     }
 
@@ -64,10 +64,9 @@ class VisualizationConfigurator extends PtsCanvas {
       invocationAssociations[type]()
     }
 
-    for(let m=0; m<this.props.effectModules.length; m++){
-      // debugger
-      if(!this.props.effectModules[m]['params'].bypass){
-        associateInvocation(this.props.effectModules[m]['params'])
+    for(let i=0; i<this.props.effectModules.length; i++){
+      if(!this.props.effectModules[i]['params'].bypass){
+        associateInvocation(this.props.effectModules[i]['params'])
       }
     }
 
