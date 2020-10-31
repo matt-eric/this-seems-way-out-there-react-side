@@ -24,7 +24,7 @@ class VisualizationConfigurator extends PtsCanvas {
 
   animate( time, ftime ) {
 
-    const { space, noiseLine, noise, follower, form, pts } = this;
+    const { space, noiseLine, noise, follower, form } = this;
 
     const { effectModules } = this.props;
 
