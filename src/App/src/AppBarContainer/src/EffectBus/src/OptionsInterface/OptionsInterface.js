@@ -62,14 +62,14 @@ export default function ModulesContainer(){
 
     <div className={classes.optionsContainer}>
 
-      <AuthenticationDialog
-        state={authenticatorIsOpen}
-        close={close}
-      />
-
       { process.env.REACT_APP_VERSION === 'development' &&
 
         <>
+
+          <AuthenticationDialog
+            state={authenticatorIsOpen}
+            close={close}
+          />
 
           <Tooltip TransitionComponent={Zoom} title={'Sign In'} placement="right">
             <Button className={classes.optionsButton} variant='contained' onClick={() => toggleAuthenticator()}>
