@@ -16,7 +16,7 @@ export const defaultEffects = [
         value: .08,
         max: .1,
         min: .01,
-        step: .01
+        step: .001
       },
     }
   },
