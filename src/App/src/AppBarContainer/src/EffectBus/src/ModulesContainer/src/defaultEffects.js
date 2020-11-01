@@ -15,7 +15,7 @@ export const defaultEffects = [
         displayName: 'Speed',
         value: .08,
         max: .1,
-        min: .01,
+        min: .001,
         step: .001
       },
     }
