@@ -23,10 +23,7 @@ export default function ModuleInterface(props){
     index
   } = props
 
-  const {
-    settings,
-    type
-  } = params
+  const { settings } = params
 
   const moduleSpecificElements = (type, index) => {
     const jsxAssociations = {
