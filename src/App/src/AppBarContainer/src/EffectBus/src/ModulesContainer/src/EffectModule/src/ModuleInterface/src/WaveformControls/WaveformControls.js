@@ -39,7 +39,7 @@ export default function WaveformControls(props) {
     effectModules,
   } = useSelector(state => state.effectBus);
 
-  const currentShape = effectModules[index]['params']['pointShape']
+  const currentShape = effectModules[index]['params']['pointShape'] || 'circle'
 
   const handleChange = () => {
     const effectsCopy = [...effectModules]
@@ -47,7 +47,9 @@ export default function WaveformControls(props) {
     const shapeOptions = ['circle', 'square']
     shapes[0] = currentShape
     shapes[1] = shapeOptions.find(option => option !== currentShape)
-    effectsCopy[index]['params']['pointShape'] = shapes.reverse()[0]
+    const effectParams = {...effectsCopy[index]['params']}
+    effectParams['pointShape'] = shapes.reverse()[0]
+    effectsCopy[index]['params'] = effectParams
     dispatch(allActions.effectBusActions.setEffectBusData('effectModules', effectsCopy))
   };
 
