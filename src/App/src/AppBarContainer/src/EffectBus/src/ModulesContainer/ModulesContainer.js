@@ -68,7 +68,7 @@ export default function ModulesContainer(){
     if(!effectModules){
 
       const client = new ApolloClient({
-         uri: 'http://localhost:8000/graphql',
+         uri: process.env.REACT_APP_VERSION === 'production' ? process.env.REACT_APP_PRODUCTION_SERVER_URL : process.env.REACT_APP_DEVELOPMENT_SERVER_URL ,
          cache: new InMemoryCache()
        });
 
