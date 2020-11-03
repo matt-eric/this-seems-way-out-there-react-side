@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import EffectModule from './src/EffectModule'
-import { defaultEffects } from './src/defaultEffects.js'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux'
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { gql } from '@apollo/client';
 import allActions from '../../../../../../../redux/actions'
 
 const useStyles = makeStyles(theme => ({
@@ -63,15 +64,71 @@ export default function ModulesContainer(){
   }
 
   useEffect(() => {
+
     if(!effectModules){
-      const mapModules = (defaults) =>
-        Array.from({ length: defaults.length }, (v, k) => k).map((v, k) => ({
-          id: `item-${k}`,
-          content: `item ${k}`,
-          params: defaults[v]
-        }));
-      const mappedModules = mapModules(defaultEffects)
-      dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mappedModules))
+
+      const client = new ApolloClient({
+         uri: 'http://localhost:8000/graphql',
+         cache: new InMemoryCache()
+       });
+
+       client
+        .query({
+          query: gql`
+            query {
+              effects {
+                id,
+                type,
+                displayName,
+                bypass,
+                settings {
+                  type,
+                  displayName,
+                  value,
+                  max,
+                  min,
+                  step
+                 }
+               }
+             }
+           `
+        })
+        .then(result => {
+
+        const effectModules = result.data.effects.map(effect => (
+          {
+            ...effect,
+            settings: [...effect.settings]
+          }
+        ));
+
+        const values = ['max', 'min', 'step', 'value']
+
+        for(let i=0; i<effectModules.length; i++){
+          let currentEffectModule = [...effectModules][i]
+          let effectSettings = [...currentEffectModule.settings]
+          for(let s=0; s<effectSettings.length; s++){
+            let setting = {...effectModules[i].settings[s]}
+            for(let val=0; val<values.length; val++){
+              setting[values[val]] = setting[values[val]]/1000
+            }
+            effectSettings[s] = setting
+          }
+          effectModules[i]['settings'] = effectSettings
+        }
+
+        const mapModules = (defaults) =>
+          Array.from({ length: defaults.length }, (v, k) => k).map((v, k) => ({
+            id: `item-${k}`,
+            content: `item ${k}`,
+            params: defaults[v]
+          }));
+
+        const mappedModules = mapModules(result.data.effects)
+
+        dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mappedModules))
+
+      });
     }
   }, [dispatch, effectModules])
 

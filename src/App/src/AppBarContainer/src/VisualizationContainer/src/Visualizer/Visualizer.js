@@ -66,6 +66,12 @@ class VisualizationConfigurator extends PtsCanvas {
         settings
       } = effect;
 
+      const foundParameters = {}
+
+      for(let i=0; i<settings.length; i++){
+        foundParameters[settings[i]['type']] = settings[i]['value']/1000
+      }
+
       const {
         behavior,
         speed,
@@ -74,12 +80,12 @@ class VisualizationConfigurator extends PtsCanvas {
         focus,
         columns,
         rows
-      } = settings;
+      } = foundParameters
 
       const invocationAssociations = {
-        'noise': () => generateNoise( behavior.value, speed.value ),
-        'waveform': () => generateWaveform( alpha.value, points.value, effect.pointShape ),
-        'gridCells': () => generateGridCells( focus.value, columns.value, rows.value )
+        'noise': () => generateNoise( behavior, speed ),
+        'waveform': () => generateWaveform( alpha, points, effect.pointShape || 'circle' ),
+        'gridCells': () => generateGridCells( focus, columns, rows )
       };
 
       invocationAssociations[type]();

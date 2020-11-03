@@ -72,12 +72,26 @@ export default function CustomizedSlider(props) {
     max,
     min,
     step
-  } = params['settings'][setting]
+  } = setting
 
   const handleSliderChange = (val) => {
-    const effectsCopy = [...effectModules]
-    effectsCopy[index]['params']['settings'][setting]['value'] = val
+
+    const effectsCopy = effectModules.map(effect => (
+      {
+        ...effect,
+        params: {
+          ...effect.params,
+          settings: [...effect.params.settings]
+        }
+      }
+    ));
+    const currentEffect = effectsCopy[index]['params']['settings']
+    const currentIndex = currentEffect.indexOf(effectsCopy[index]['params']['settings'].find(e => e.type === setting.type))
+    const currentParameter = {...effectsCopy[index]['params']['settings'][currentIndex]}
+    currentParameter['value'] = val
+    effectsCopy[index]['params']['settings'][currentIndex] = currentParameter
     dispatch(allActions.effectBusActions.setEffectBusData('effectModules', effectsCopy))
+
   }
 
   return (
