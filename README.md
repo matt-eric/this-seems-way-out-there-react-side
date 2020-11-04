@@ -26,7 +26,7 @@ Create a `.env` file in the root directory and add the following variables:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the React app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Hot module replacement is in use. The Redux store will retain its state when files are changed.
