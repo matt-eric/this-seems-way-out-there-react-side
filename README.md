@@ -1,10 +1,12 @@
-# *This seems WAY out there.* (Client)
+# *This seems WAY out there. (Client)*
+
+### *A visual effect web app generating responses based on mouse/touch placement and movement. Parameters are adjustable through a user-controllable effect bus.*
 
 ## [Live Demo](https://this-seems-way-out-there.web.app/)
 
 ### This project has an accompanying [server-side repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
 
-#### This React.js application currently sources the default values for the effect module parameters from seed data in the GraphQL Apollo server (both in development and production). More client/server communication methods will be implemented as this application is developed further.
+#### This React.js application currently sources the default values for the effect module parameters from seed data in the GraphQL Apollo server (both in development and production). More client/server communication methods will be implemented as development continues.
 
 ## Steps for starting the development environment:
 
