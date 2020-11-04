@@ -18,7 +18,7 @@ Create a `.env` file in the root directory and add the following variables:
 
 `REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql`
 
-*NOTE: Auth implementation is currently in progress. Additional authentication-related ENV variables will be added here once the feature is fully-functional.*
+*NOTE: Auth implementation is currently in progress. Additional authentication-related ENV variables will be added here when the feature becomes fully-functional.*
 
 ### 2. Scripts
 
