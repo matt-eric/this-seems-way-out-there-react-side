@@ -18,7 +18,9 @@ REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql
 
 ### Scripts
 
-### `npm run dev`
+*Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client. The seed data used to generate the effects in the React.app is sourced from the Apollo Server.*
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -34,4 +36,4 @@ Hot module replacement is in use. The Redux store will retain its state when fil
 - [x] Firebase
 - [ ] Okta
 
-### Contributing guidelines will be added soon.
+### Contributing guidelines to be added soon.
