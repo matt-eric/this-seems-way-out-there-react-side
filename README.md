@@ -29,6 +29,7 @@ Hot module replacement is in use. The Redux store will retain its state when fil
 
 - [x] React.js
 - [x] Redux.js
+- [x] Pts.js
 - [x] Material-UI
 - [x] Firebase
 - [ ] Okta
