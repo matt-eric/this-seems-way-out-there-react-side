@@ -55,7 +55,7 @@ export default function EffectModule(props){
       ref={innerRef}
       {...draggableProps}
     >
-      <div className={effectModules[index]['params']['bypass'] && classes.bypass}>
+      <div className={effectModules[index]['params']['bypass'] ? classes.bypass : undefined}>
         <ModuleToolbar
           index={index}
           innerRef={innerRef}
