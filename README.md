@@ -31,7 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 🔥 Hot module replacement is in use. The Redux store will retain its state when files are changed.
 
-### **Tech stack**:
+### Tech stack:
 
 - [x] React.js
 - [x] Redux.js
