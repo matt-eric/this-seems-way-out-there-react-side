@@ -6,7 +6,7 @@
 
 ### This project has an accompanying [server-side repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
 
-#### This React.js application currently sources default values for the effect module parameters from seed data in the GraphQL Apollo server (in development and production). More client/server communication methods will be implemented as development continues.
+#### This React.js application currently sources default values for effect module parameters from seed data in the GraphQL Apollo server (in development and production). More client/server communication methods will be implemented as development continues.
 
 ## Steps for starting the development environment:
 
