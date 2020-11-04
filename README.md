@@ -6,7 +6,7 @@
 
 ### This project has an accompanying [server-side repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
 
-#### This React.js application currently sources the default values for the effect module parameters from seed data in the GraphQL Apollo server (both in development and production). More client/server communication methods will be implemented as development continues.
+#### This React.js application currently sources default values for the effect module parameters from seed data in the GraphQL Apollo server (in development and production). More client/server communication methods will be implemented as development continues.
 
 ## Steps for starting the development environment:
 
@@ -22,14 +22,14 @@ Create a `.env` file in the root directory and add the following variables:
 
 ### 2. Scripts
 
-*Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client.
+*Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client.*
 
 ### `npm start`
 
 Runs the React app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Hot module replacement is in use. The Redux store will retain its state when files are changed.
+🔥 Hot module replacement is in use. The Redux store will retain its state when files are changed.
 
 ### Technologies used:
 
