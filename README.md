@@ -22,7 +22,7 @@ Create a `.env` file in the root directory and add the following variables:
 
 ### 2. Scripts
 
-*Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client. The seed data used to generate the effects in the React.app is sourced from the Apollo Server.*
+*Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client.
 
 ### `npm start`
 
