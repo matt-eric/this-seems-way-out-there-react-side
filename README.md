@@ -4,7 +4,7 @@
 
 ### This project has an accompanying [server-side repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
 
-
+#### This React.js application currently sources the default values for the effect module parameters from seed data in the GraphQL Apollo server (both in development and production). More client/server communication methods will be implemented as this application is developed further.
 
 ## Steps for starting the development environment:
 
@@ -15,6 +15,8 @@ Create a `.env` file in the root directory and add the following variables:
 `REACT_APP_VERSION=development`
 
 `REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql`
+
+*NOTE: Auth implementation is currently in progress. Additional authentication-related ENV variables will be added here once the feature is fully-functional.*
 
 ### 2. Scripts
 
