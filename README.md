@@ -40,4 +40,4 @@ Hot module replacement is in use. The Redux store will retain its state when fil
 - [x] Firebase
 - [ ] Okta
 
-### Contributing guidelines to be added soon.
+#### Contributing guidelines to be added soon.
