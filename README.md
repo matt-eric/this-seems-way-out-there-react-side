@@ -10,7 +10,7 @@
 
 ### 1. Add ENV variables:
 
-Create a .env file in the root directory and add the following variables:
+Create a `.env` file in the root directory and add the following variables:
 
 REACT_APP_VERSION=development
 
