@@ -120,7 +120,7 @@ function AppBarContainer() {
       )
       setFontHasLoaded(true)
     }
-    setTimeout( fontLoadingProcess, 1750)
+    setTimeout( fontLoadingProcess, 1500)
   }
 
   return (
