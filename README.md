@@ -12,9 +12,9 @@
 
 Create a `.env` file in the root directory and add the following variables:
 
-REACT_APP_VERSION=development
+`REACT_APP_VERSION=development`
 
-REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql
+`REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql`
 
 ### 2. Scripts
 
