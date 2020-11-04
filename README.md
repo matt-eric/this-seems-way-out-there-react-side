@@ -8,15 +8,15 @@
 
 ## Steps for starting the development environment:
 
-### ENV variables
+### 1. Add ENV variables:
 
-Add a `.env` file to the root directory and with the following variables:
+Create a .env file in the root directory and add the following variables:
 
 REACT_APP_VERSION=development
 
 REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql
 
-### Scripts
+### 2. Scripts
 
 *Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client. The seed data used to generate the effects in the React.app is sourced from the Apollo Server.*
 
