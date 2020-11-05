@@ -24,27 +24,38 @@ const useStyles = makeStyles((theme) => ({
 
 function GitHubModule(props) {
 
+  const [element, setElement] = React.useState(<div/>)
+
   const classes = useStyles();
 
   const openGitHub = (repo) => {
     window.open(`https://github.com/matt-eric/${repo}`)
   }
 
-  return (
+  const loadElement = () => {
+    setElement(
+      <Tooltip TransitionComponent={Zoom} title={`${props.tooltip}-side Source Code`}>
+        <Paper className={classes.paper} onClick={() => openGitHub(props.endpoint)} target="_blank">
+          <IconButton className={classes.icon} >
+            <GitHubIcon/>
+          </IconButton>
+          <img
+            draggable="false"
+            src={props.svg}
+            width={"100%"}
+            alt={props.alt}
+          />
+        </Paper>
+      </Tooltip>
+    )
+  }
 
-    <Tooltip TransitionComponent={Zoom} title={`${props.tooltip}-side Source Code`}>
-      <Paper className={classes.paper} onClick={() => openGitHub(props.endpoint)} target="_blank">
-        <IconButton className={classes.icon} >
-          <GitHubIcon/>
-        </IconButton>
-        <img
-          draggable="false"
-          src={props.svg}
-          width={"100%"}
-          alt={props.alt}
-        />
-      </Paper>
-    </Tooltip>
+  setTimeout( loadElement, 1500 )
+
+  return (
+    <>
+      { element }
+    </>
 
   );
 
