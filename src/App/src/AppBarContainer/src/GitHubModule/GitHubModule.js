@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: '#26ce9e',
   },
+  preRenderSpinner: {
+    display: 'none'
+  }
 }));
 
 function GitHubModule(props) {
@@ -38,6 +41,11 @@ function GitHubModule(props) {
         size={30}
         frontColor="#0f0f0f"
         backColor="#26ce9e"
+      />
+      <img
+        className={classes.preRenderSpinner}
+        src={props.svg}
+        alt={props.alt}
       />
     </div>
   )
