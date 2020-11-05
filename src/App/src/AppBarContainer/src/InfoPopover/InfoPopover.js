@@ -5,6 +5,8 @@ import {
   IconButton,
   Popover,
   Typography,
+  Tooltip,
+  Zoom
 } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,9 +36,11 @@ export default function InfoPopover() {
 
   return (
     <div>
-      <IconButton className={classes.icon} onClick={handleClick}>
-        <HelpIcon />
-      </IconButton>
+      <Tooltip TransitionComponent={Zoom} title={`Info`}>
+        <IconButton className={classes.icon} onClick={handleClick}>
+          <HelpIcon />
+        </IconButton>
+      </Tooltip>
       <Popover
         id={id}
         open={open}

@@ -6,6 +6,8 @@ import {
   Toolbar,
   Typography,
   IconButton,
+  Tooltip,
+  Zoom
 } from '@material-ui/core';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import VisualizationContainer from './src/VisualizationContainer'
@@ -87,11 +89,13 @@ function AppBarContainer() {
       endpoint: "this-seems-WAY-out-there-node-side",
       svg: node,
       alt: "node",
+      tooltip: "Server",
     },
     {
       endpoint: "this-seems-WAY-out-there-react-side",
       svg: react,
       alt: "react",
+      tooltip: "Client",
     },
   ]
 
@@ -121,11 +125,12 @@ function AppBarContainer() {
 
             {
               iconProps.map((iconInfo, i) => {
-                const { endpoint, svg, alt } = iconInfo
+                const { endpoint, svg, alt, tooltip } = iconInfo
                 return (<GitHubModule
                   svg={svg}
                   alt={alt}
                   endpoint={endpoint}
+                  tooltip={tooltip}
                 />)
               })
             }
@@ -146,9 +151,11 @@ function AppBarContainer() {
 
         <Toolbar>
 
-          <IconButton onClick={() => handleDrawerState()} className={classes.icon} edge="start">
-            <BlurOnIcon fontSize="large"/>
-          </IconButton>
+          <Tooltip TransitionComponent={Zoom} title={`Effect Bus`}>
+            <IconButton onClick={() => handleDrawerState()} className={classes.icon} edge="start">
+              <BlurOnIcon fontSize="large"/>
+            </IconButton>
+          </Tooltip>
 
         </Toolbar>
 

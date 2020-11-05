@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   IconButton,
   Paper,
+  Tooltip,
+  Zoom
 } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 
@@ -30,17 +32,19 @@ function GitHubModule(props) {
 
   return (
 
-    <Paper className={classes.paper} onClick={() => openGitHub(props.endpoint)} target="_blank">
-      <IconButton className={classes.icon} >
-        <GitHubIcon/>
-      </IconButton>
-      <img
-        draggable="false"
-        src={props.svg}
-        width={"100%"}
-        alt={props.alt}
-      />
-    </Paper>
+    <Tooltip TransitionComponent={Zoom} title={`${props.tooltip}-side Source Code`}>
+      <Paper className={classes.paper} onClick={() => openGitHub(props.endpoint)} target="_blank">
+        <IconButton className={classes.icon} >
+          <GitHubIcon/>
+        </IconButton>
+        <img
+          draggable="false"
+          src={props.svg}
+          width={"100%"}
+          alt={props.alt}
+        />
+      </Paper>
+    </Tooltip>
 
   );
 
