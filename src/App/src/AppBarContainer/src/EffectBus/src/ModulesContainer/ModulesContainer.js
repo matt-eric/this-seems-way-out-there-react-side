@@ -68,7 +68,7 @@ export default function ModulesContainer(){
     if(!effectModules){
 
       const client = new ApolloClient({
-         uri: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_PRODUCTION_SERVER_URL : process.env.REACT_APP_DEVELOPMENT_SERVER_URL ,
+         uri: process.env.REACT_APP_NODE_ENV === 'production' ? process.env.REACT_APP_PRODUCTION_SERVER_URL : process.env.REACT_APP_DEVELOPMENT_SERVER_URL ,
          cache: new InMemoryCache()
        });
 
