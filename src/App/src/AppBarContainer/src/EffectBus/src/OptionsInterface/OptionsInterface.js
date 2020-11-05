@@ -62,7 +62,7 @@ export default function ModulesContainer(){
 
     <div className={classes.optionsContainer}>
 
-      { process.env.REACT_APP_VERSION === 'development' &&
+      { process.env.NODE_ENV === 'development' &&
 
         <>
 
