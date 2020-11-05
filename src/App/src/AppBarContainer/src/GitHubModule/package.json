@@ -1,0 +1,6 @@
+{
+  "name": "GitHubModule",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./GitHubModule.js"
+}
