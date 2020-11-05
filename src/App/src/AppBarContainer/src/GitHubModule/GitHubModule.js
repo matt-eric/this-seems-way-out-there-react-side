@@ -7,6 +7,7 @@ import {
   Zoom
 } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import { CubeSpinner } from "react-spinners-kit";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -14,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     backgroundColor: '#0A0A0A',
     marginRight: '10px',
+    border: '1px solid #26ce9e',
+    paddingRight: '10px'
+  },
+  spinner: {
+    marginRight: '55px',
     border: '1px solid #26ce9e',
     paddingRight: '10px'
   },
@@ -26,25 +32,44 @@ function GitHubModule(props) {
 
   const classes = useStyles();
 
+  const [element, setElement] = React.useState(
+    <div className={classes.spinner} >
+      <CubeSpinner
+        size={30}
+        frontColor="#0f0f0f"
+        backColor="#26ce9e"
+      />
+    </div>
+  )
+
   const openGitHub = (repo) => {
     window.open(`https://github.com/matt-eric/${repo}`)
   }
 
-  return (
+  const loadElement = () => {
+    setElement(
+      <Tooltip TransitionComponent={Zoom} title={`${props.tooltip}-side Source Code`}>
+        <Paper className={classes.paper} onClick={() => openGitHub(props.endpoint)} target="_blank">
+          <IconButton className={classes.icon} >
+            <GitHubIcon/>
+          </IconButton>
+          <img
+            draggable="false"
+            src={props.svg}
+            width={"100%"}
+            alt={props.alt}
+          />
+        </Paper>
+      </Tooltip>
+    )
+  }
 
-    <Tooltip TransitionComponent={Zoom} title={`${props.tooltip}-side Source Code`}>
-      <Paper className={classes.paper} onClick={() => openGitHub(props.endpoint)} target="_blank">
-        <IconButton className={classes.icon} >
-          <GitHubIcon/>
-        </IconButton>
-        <img
-          draggable="false"
-          src={props.svg}
-          width={"100%"}
-          alt={props.alt}
-        />
-      </Paper>
-    </Tooltip>
+  setTimeout( loadElement, 1500 )
+
+  return (
+    <>
+      { element }
+    </>
 
   );
 
