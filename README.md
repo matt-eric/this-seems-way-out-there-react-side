@@ -14,7 +14,7 @@
 
 Create a `.env` file in the root directory and add the following variables:
 
-`NODE_ENV=development`
+`REACT_APP_NODE_ENV=development`
 
 `REACT_APP_DEVELOPMENT_SERVER_URL=http://localhost:8000/graphql`
 
