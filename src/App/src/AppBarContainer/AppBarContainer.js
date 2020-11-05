@@ -146,9 +146,11 @@ function AppBarContainer() {
 
         <Toolbar>
 
-          <IconButton onClick={() => handleDrawerState()} className={classes.icon} edge="start">
-            <BlurOnIcon fontSize="large"/>
-          </IconButton>
+          <Tooltip TransitionComponent={Zoom} title={`Effect Bus`}>
+            <IconButton onClick={() => handleDrawerState()} className={classes.icon} edge="start">
+              <BlurOnIcon fontSize="large"/>
+            </IconButton>
+          </Tooltip>
 
         </Toolbar>
 
