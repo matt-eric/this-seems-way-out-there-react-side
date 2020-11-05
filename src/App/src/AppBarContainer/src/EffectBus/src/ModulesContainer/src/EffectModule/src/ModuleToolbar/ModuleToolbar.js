@@ -88,7 +88,7 @@ export default function ModuleToolbar(props){
           className={classes.dragIndicator}
           {...dragHandleProps}
         >
-          <Tooltip TransitionComponent={Zoom} title="Re-order signal chain">
+          <Tooltip TransitionComponent={Zoom} title="Drag to re-order">
             <DragIndicatorIcon/>
           </Tooltip>
         </IconButton>
