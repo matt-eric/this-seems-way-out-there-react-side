@@ -37,7 +37,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 - [x] Redux.js
 - [x] Pts.js
 - [x] Material-UI
-- [x] Firebase
 - [ ] Okta
+
+This repository is configured for deployment with [Firebase](https://firebase.google.com/).
 
 #### Contributing guidelines to be added soon.
