@@ -7,41 +7,22 @@ import {
   Typography,
   IconButton,
 } from '@material-ui/core';
-import GitHubIcon from '@material-ui/icons/GitHub';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
 import VisualizationContainer from './src/VisualizationContainer'
 import InfoPopover from './src/InfoPopover'
 import { useDispatch, useSelector } from 'react-redux'
 import allActions from '../../../redux/actions'
 import EffectBus from './src/EffectBus'
+import GitHubModule from './src/GitHubModule'
 import PropagateLoader from "react-spinners/PropagateLoader";
+import react from './src/GitHubModule/src/svg/react.svg'
+import node from './src/GitHubModule/src/svg/node.svg'
 
 const useStyles = makeStyles((theme) => ({
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
   bottomAppBar: {
     top: 'auto',
     bottom: 0,
     position: 'fixed'
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-    color: '#26ce9e'
-  },
-  hide: {
-    display: 'none',
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
   },
   content: {
     backgroundColor: '#000',
@@ -62,12 +43,6 @@ const useStyles = makeStyles((theme) => ({
   headerFont: {
     fontFamily: "'Fascinate', cursive",
     color: '#26ce9e'
-  },
-  alphaButton: {
-    fontFamily: "'Fascinate', cursive",
-    backgroundColor: '#26ce9e',
-    color: '#fff',
-    marginLeft: '20px'
   },
   iconButtons: {
     position: 'absolute',
@@ -103,13 +78,22 @@ function AppBarContainer() {
     expanded
   } = useSelector(state => state.effectBus);
 
-  const openGitHub = () => {
-    window.open('https://github.com/matt-eric/this-seems-way-out-there-react-side')
-  }
-
   const handleDrawerState = () => {
     dispatch(allActions.effectBusActions.setEffectBusData( 'expanded', !expanded ))
   }
+
+  const iconProps = [
+    {
+      endpoint: "this-seems-WAY-out-there-node-side",
+      svg: node,
+      alt: "node",
+    },
+    {
+      endpoint: "this-seems-WAY-out-there-react-side",
+      svg: react,
+      alt: "react",
+    },
+  ]
 
   if(!fontHasLoaded){
     const fontLoadingProcess = () => {
@@ -135,9 +119,16 @@ function AppBarContainer() {
 
           <div className={classes.iconButtons}>
 
-            <IconButton className={classes.icon} onClick={() => openGitHub()}>
-              <GitHubIcon/>
-            </IconButton>
+            {
+              iconProps.map((iconInfo, i) => {
+                const { endpoint, svg, alt } = iconInfo
+                return (<GitHubModule
+                  svg={svg}
+                  alt={alt}
+                  endpoint={endpoint}
+                />)
+              })
+            }
 
             <InfoPopover/>
 
