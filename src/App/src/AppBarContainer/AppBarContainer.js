@@ -127,6 +127,7 @@ function AppBarContainer() {
               iconProps.map((iconInfo, i) => {
                 const { endpoint, svg, alt, tooltip } = iconInfo
                 return (<GitHubModule
+                  key={`${alt}-github-module`}
                   svg={svg}
                   alt={alt}
                   endpoint={endpoint}
