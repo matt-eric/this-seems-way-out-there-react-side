@@ -1,11 +1,15 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
   - node_modules
 script:
-  - npm run test -- --coverage
-  - npm run build
+- npm run test -- --coverage
+- npm run build
 after_script:
-  - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+- COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
+deploy:
+  provider: gae
+  token:
+    secure: oCOZnnPywywhSTH/Sc0H2jskOkNedcj2fnl6I8zWwOJ3oLzFiK5XEgVFgaYtKU3RkXYgblGGpwDnAQoYK3hezniwfO8H88tNHOKIldBgeh39fUTHYlfjvtKnYd0Iw9S3rmEQYIZWWVkP7t9pgHvMGThMzG/G1mI6yx4LZE7LvQbZtJwsWQ2enyLz+qdONkjHrxTFXvnymyTth9LvVLe2yK/tHWIAxvVgx9sykFYnAi26rR+uh20Z9KA/mWRsX6b8fus6QfCZvgHOveBVRNiKHfyMd+4x+3BqfEPKEqocl5x5I1AXYtuI/0Or5l8UePTAj/ZpHx+cmGQVz1vDzSbZvis3vY4SuDGk6Za6tvZjlhHX94f9pKGFk8s8AoOi0CtBrAQisKx3fteuZn5RVZzMEl6iXiHDAoSv4M3QeUjnScxqdvfbBnVSB+s74RfCixcqFwuh+802P26Qw5vdFoXgGIj7zR/STbaJKVgwhKZCKb7eD52xaq+GxCXkMhVppD+CxYAeVI7CQp4hgGklRe4buDKGWvrpKJ12Haas1WVkW0kaFOVzLY2+Al5rTRJSPM/IKnrp9K7tx0+89ChjTsa4g7r1RAeN8ffzWJxDMvXy4zQEv0v0vgcIYuX7WM1zw40hE8PV9dm2nqbJGhOr6Ll7L4E0N6WnvR+pxKGJ/8V2P50=
