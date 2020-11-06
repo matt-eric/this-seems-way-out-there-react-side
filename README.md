@@ -1,12 +1,10 @@
-# This seems WAY out there. *(Client)*
+# This seems WAY out there. *(Front End)*
 
 ### *A visual effect web app generating responses based on mouse/touch placement and movement. Parameters are adjustable through a user-controllable effect bus.*
 
 ## [Live Demo](https://this-seems-way-out-there.web.app/)
 
-### This project has an accompanying [server-side repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
-
-#### This React.js application currently sources default values for effect module parameters from seed data in the GraphQL Apollo server (in development and production). More client/server communication methods will be implemented as development continues.
+### This project has an accompanying [back end repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
 
 ## Steps for starting the development environment:
 
@@ -22,7 +20,7 @@ Create a `.env` file in the root directory and add the following variables:
 
 ### 2. Scripts
 
-*Note: Run the [server-side](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the client.*
+*Note: Run the [back end](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the front end.*
 
 ### `npm start`
 
