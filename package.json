@@ -35,10 +35,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "coverage": "react-scripts test --env=jsdom --coverage",
-    "coveralls": "cat ./coverage/lcov.info | node node_modules/.bin/coveralls"
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
   },
   "eslintConfig": {
     "extends": "react-app"
