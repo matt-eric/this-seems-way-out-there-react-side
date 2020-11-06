@@ -38,7 +38,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
-    "test-dev": "npm test",
+    "test-dev": "npm test"
   },
   "eslintConfig": {
     "extends": "react-app"
