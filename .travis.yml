@@ -8,7 +8,3 @@ script:
   - npm run coveralls
 after_script: # Upload coverage reports
   - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run coveralls
-deploy:
-  provider: firebase
-  token:
-    secure: kmx8NvAvEViqx6rCF8TUYxLul7Nee92GOMN2IMnCOnk/kfedSpxiZL86cs/PZ7eL0v7vRNqsUdqYL4gbGfwZbYEgN9ukNUuEmksA+hE8WBnQobDBYCTpsSHB8I4ylmnoIxh+lPz09qHeA0QLJGJtZG4UgFdC1gd+/Wm3zfHEAA+HiURul8f4ivWOLBjXhaA3hmsIc43DPaREM9fhFssmnPdiKElPUem97Cr8rKktn8oQJXXY8ubt7Lx3HYVUJKz04BYPAnhS26ZNUl92nj7Pq0zg0KS/1kGPGJunH8TFsCEh2DZCjJ5dKs9oESOgPyLq/1nFke9+8dAakQlgzlo4UK2mOo9iiI7NdJNzuvf/IjaUhmg1m4OTd3M6DKvaAX1/aUtIylckDlXBL6+koVSP8FZaWWU0vT5LCHh7KDSERQ8ilNcQ88P45eFICEM7Fxz2tlQ0vKiGK3r5xpBSl38AAX9nq3OHf9rT/zRVNazxXlqfTuEdpk73sRCLKTSnIOy0NSTqwQtH3jDHC4aM7yCdvkScj2H1SegXIujKDo=
