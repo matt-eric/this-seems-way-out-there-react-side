@@ -45,7 +45,7 @@ class VisualizationConfigurator extends PtsCanvas {
         return p.$add( 0, p.noise2D()*space.center.y );
       });
       waveSpeed = waveSpeed.concat( [space.size, new Pt( 1, space.size.y )] );
-      form.fillOnly(`rgba(41, 98, 255, ${alpha})`).polygon( waveSpeed );
+      form.fillOnly(`rgba(74, 20, 140, ${alpha})`).polygon( waveSpeed );
       form.fill("#76ff03").points( waveSpeed, points, shape);
     }
 
