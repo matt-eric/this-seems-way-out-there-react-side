@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/matt-eric/this-seems-WAY-out-there-react-side.svg?branch=master)](https://travis-ci.com/matt-eric/this-seems-WAY-out-there-react-side)
+
 # This seems WAY out there. *(Front End)*
 
 ### *A visual effect web app generating responses based on mouse/touch placement and movement. Parameters are adjustable through a user-controllable effect bus.*
