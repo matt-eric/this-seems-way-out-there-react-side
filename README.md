@@ -22,7 +22,7 @@ Create a `.env` file in the root directory and add the following variables:
 
 ### 2. Scripts
 
-*Note: Run the [back end](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the front end.*
+*Note: Start the [back end](https://github.com/matt-eric/this-seems-WAY-out-there-node-side) before starting the front end. The defualt settings for the effect module paramaters are fetched from seed data in the GraphQL server.*
 
 ### `npm start`
 
