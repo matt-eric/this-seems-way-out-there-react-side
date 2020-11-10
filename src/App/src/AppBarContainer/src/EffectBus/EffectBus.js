@@ -38,6 +38,10 @@ export default function EffectBus(props) {
     expanded
   } = useSelector(state => state.effectBus);
 
+  const onRedirectCallback = () => {
+    
+  }
+
   return(
 
     <div className={classes.root}>
@@ -51,6 +55,7 @@ export default function EffectBus(props) {
             domain={process.env.REACT_APP_AUTH0_DOMAIN}
             clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
             redirectUri={window.location.origin}
+            onRedirectCallback={onRedirectCallback}
           >
             <OptionsInterface/>
             <ModulesContainer/>
