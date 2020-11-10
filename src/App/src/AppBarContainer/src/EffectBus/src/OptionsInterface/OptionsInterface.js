@@ -1,8 +1,8 @@
 import React from 'react';
-import AuthenticationDialog from './src/AuthenticationDialog'
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import CloudIcon from '@material-ui/icons/Cloud';
+import Auth0Lock from 'auth0-lock';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Tooltip,
@@ -33,12 +33,6 @@ export default function ModulesContainer(){
 
   // const dispatch = useDispatch();
 
-  const [authenticatorIsOpen, setAuthenticatorIsOpen] = React.useState(false)
-
-  const close = () => {
-    setAuthenticatorIsOpen(false)
-  }
-
   const classes = useStyles();
 
   // const {
@@ -54,9 +48,11 @@ export default function ModulesContainer(){
     // dispatch(allActions.effectBusActions.setEffectBusData('effectModules', mapModules.length+1))
   }
 
-  const toggleAuthenticator = () => {
-    setAuthenticatorIsOpen(!authenticatorIsOpen)
-  }
+  const authenticator = new Auth0Lock(
+    process.env.REACT_APP_AUTH0_CLIENT_ID,
+    process.env.REACT_APP_AUTH0_DOMAIN,
+    { redirect: false }
+  );
 
   return (
 
@@ -66,13 +62,8 @@ export default function ModulesContainer(){
 
         <>
 
-          <AuthenticationDialog
-            state={authenticatorIsOpen}
-            close={close}
-          />
-
           <Tooltip TransitionComponent={Zoom} title={'Sign In'} placement="right">
-            <Button className={classes.optionsButton} variant='contained' onClick={() => toggleAuthenticator()}>
+            <Button className={classes.optionsButton} variant='contained' onClick={() => authenticator.show()}>
               <CloudIcon fontSize='large'/>
             </Button>
           </Tooltip>

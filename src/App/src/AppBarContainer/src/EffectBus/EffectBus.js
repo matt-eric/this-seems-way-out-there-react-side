@@ -6,6 +6,7 @@ import {
   AccordionSummary,
   AccordionDetails
 } from '@material-ui/core'
+import { Auth0Provider } from '@auth0/auth0-react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux'
 
@@ -37,6 +38,10 @@ export default function EffectBus(props) {
     expanded
   } = useSelector(state => state.effectBus);
 
+  const onRedirectCallback = () => {
+    
+  }
+
   return(
 
     <div className={classes.root}>
@@ -46,8 +51,15 @@ export default function EffectBus(props) {
           style={{display: 'none'}}
         />
         <AccordionDetails className={classes.accordianDetails}>
-          <OptionsInterface/>
-          <ModulesContainer/>
+          <Auth0Provider
+            domain={process.env.REACT_APP_AUTH0_DOMAIN}
+            clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+            redirectUri={window.location.origin}
+            onRedirectCallback={onRedirectCallback}
+          >
+            <OptionsInterface/>
+            <ModulesContainer/>
+          </Auth0Provider>
         </AccordionDetails>
       </Accordion>
     </div>
