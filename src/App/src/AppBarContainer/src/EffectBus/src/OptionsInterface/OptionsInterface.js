@@ -1,5 +1,4 @@
 import React from 'react';
-import AuthenticationDialog from './src/AuthenticationDialog'
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import CloudIcon from '@material-ui/icons/Cloud';
@@ -65,11 +64,6 @@ export default function ModulesContainer(){
       { process.env.REACT_APP_NODE_ENV === 'development' &&
 
         <>
-
-          <AuthenticationDialog
-            state={authenticatorIsOpen}
-            close={close}
-          />
 
           <Tooltip TransitionComponent={Zoom} title={'Sign In'} placement="right">
             <Button className={classes.optionsButton} variant='contained' onClick={() => toggleAuthenticator()}>
