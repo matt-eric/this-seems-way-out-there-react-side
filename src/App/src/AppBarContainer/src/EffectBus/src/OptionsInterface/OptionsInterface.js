@@ -49,8 +49,8 @@ export default function ModulesContainer(){
   }
 
   const authenticator = new Auth0Lock(
-    process.env.REACT_APP_AUTH0_CLIENT_ID,
-    process.env.REACT_APP_AUTH0_DOMAIN,
+    process.env.REACT_APP_AUTH0_CLIENT_ID || '',
+    process.env.REACT_APP_AUTH0_DOMAIN || '',
     { redirect: false }
   );
 
@@ -58,7 +58,7 @@ export default function ModulesContainer(){
 
     <div className={classes.optionsContainer}>
 
-      { process.env.REACT_APP_NODE_ENV === 'development' &&
+      { process.env.REACT_APP_NODE_ENV === 'development-auth' &&
 
         <>
 
