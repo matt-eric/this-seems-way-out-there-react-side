@@ -6,8 +6,6 @@
 
 ### *A visual effect web app generating responses based on mouse/touch placement and movement. Parameters are adjustable through a user-controllable effect bus.*
 
-## [Live Demo](https://this-seems-way-out-there.web.app/)
-
 ### This project has an accompanying [back end repository](https://github.com/matt-eric/this-seems-WAY-out-there-node-side).
 
 ## Steps for starting the development environment:
